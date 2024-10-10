@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class User {
-    private String name;
     private String id;
+    private String name;
     private String passWord;
     private boolean borrowStatus;
     private List<Document> borrowedDocuments;
@@ -67,6 +67,10 @@ public class User {
         return borrowStatus;
     }
 
+    public boolean checkReEnterPassWord(String otherPassWord) {
+        return passWord.equals(otherPassWord);
+    }
+
     public void printInfoUser() {
         System.out.println("Id: " + id + "\nTen nguoi dung: " + name + "\nTrang thai muon sach: ");
         if (borrowStatus) {
@@ -78,8 +82,8 @@ public class User {
 
     public void printBorrowDocument() {
         System.out.println("Danh sach tai lieu dang muon: ");
-        for (int i = 0; i < borrowedDocuments.size(); i++) {
-            borrowedDocuments.get(i).printInfoDoc();
+        for (Document borrowDoc : borrowedDocuments) {
+            borrowDoc.printInfoDoc();
         }
     }
 }

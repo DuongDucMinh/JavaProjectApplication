@@ -1,60 +1,64 @@
 import java.util.*;
 
-public class Library { 
-    private List<Document> documents;
+public class Library {
+    private HashMap<String, Document> docMap;
+
+    public Library() {
+        docMap = new HashMap<>();
+    }
 
     public void addDocument(Document document) {
-        documents.add(document);
+        docMap.put(document.getIdDoc(), document);
     }
 
-    public void removeDocument(Document document) {
-        documents.remove(document);
+    public void removeDocument(String id) {
+        docMap.remove(id);
     }
 
-    public void editDocument(Document oldDocument, Document newDocument) {
-        int index = documents.indexOf(oldDocument);
-        if (index != -1) {
-            documents.set(index, newDocument);
-        }
+    public void editDocument(String id, String newTitle, String newAuthor, String newGenre, int newQuantity) {
+        Document doc = docMap.get(id);
+        doc.setTitle(newTitle);
+        doc.setAuthor(newAuthor);
+        doc.setGenre(newGenre);
+        doc.setQuantity(newQuantity);
+        docMap.put(id, doc);
     }
 
-    public void editDocument(Document currentDocument, String newAuthor, String newGenre, int newQuantity) {
-        for (Document doc : documents) {
-            if (doc.equals(currentDocument)) {
-                doc.setAuthor(newAuthor);
-                doc.setGenre(newGenre);
-                doc.setQuantity(newQuantity);
-            }
-        }
+    public void editDocumentTitle(String id, String newTitle) {
+        Document doc = docMap.get(id);
+        doc.setAuthor(newTitle);
+        docMap.put(id, doc);
     }
 
-    public void editDocumentAuthor(Document currentDocument, String newAuthor) {
-        for (Document doc : documents) {
-            if (doc.equals(currentDocument)) {
-                doc.setAuthor(newAuthor);
-            }
-        }
+    public void editDocumentAuthor(String id, String newAuthor) {
+        Document doc = docMap.get(id);
+        doc.setAuthor(newAuthor);
+        docMap.put(id, doc);
     }
 
-    public void editDocumentGenre(Document currentDocument, String newGenre) {
-        for (Document doc: documents) {
-            if (doc.equals(currentDocument)) {
-                doc.setGenre(newGenre);
-            }
-        }
+    public void editDocumentGenre(String id, String newGenre) {
+        Document doc = docMap.get(id);
+        doc.setGenre(newGenre);
+        docMap.put(id, doc);
     }
 
-    public void editDocumentGenre(Document currentDocument, int newQuantity) {
-        for (Document doc: documents) {
-            if (doc.equals(currentDocument)) {
-                doc.setQuantity(newQuantity);
-            }
-        }
+    public void editDocumentQuantity(String id, int newQuantity) {
+        Document doc = docMap.get(id);
+        doc.setQuantity(newQuantity);
+        docMap.put(id, doc);
     }
 
-    public List<Document> findDocuments(String keyWord) {
+    public boolean lookUpDoc(String id) {
+        return docMap.containsKey(id);
+    }
+
+    public Document findDocId(String id) {
+        return docMap.get(id);
+    }
+
+    public List<Document> findAll(String keyWord) {
         List<Document> res = new ArrayList<>();
-        for (Document doc : documents) {
+        for (Document doc : docMap.values()) {
             if (doc.getAuthor().toLowerCase().contains(keyWord.toLowerCase()) ||
                 doc.getTitle().toLowerCase().contains(keyWord.toLowerCase()) ||
                 doc.getGenre().toLowerCase().contains(keyWord.toLowerCase())) {
@@ -66,7 +70,7 @@ public class Library {
 
     public List<Document> findDocTitle(String keyWord) {
         List<Document> res = new ArrayList<>();
-        for (Document doc : documents) {
+        for (Document doc : docMap.values()) {
             if (doc.getTitle().toLowerCase().contains(keyWord.toLowerCase())) {
                 res.add(doc);
             }
@@ -76,7 +80,7 @@ public class Library {
 
     public List<Document> findDocAuthor(String keyWord) {
         List<Document> res = new ArrayList<>();
-        for (Document doc : documents) {
+        for (Document doc : docMap.values()) {
             if (doc.getAuthor().toLowerCase().contains(keyWord.toLowerCase())) {
                 res.add(doc);
             }
@@ -86,7 +90,7 @@ public class Library {
 
     public List<Document> findDocGenre(String keyWord) {
         List<Document> res = new ArrayList<>();
-        for (Document doc : documents) {
+        for (Document doc : docMap.values()) {
             if (doc.getGenre().toLowerCase().contains(keyWord.toLowerCase())) {
                 res.add(doc);
             }
@@ -94,4 +98,9 @@ public class Library {
         return res;
     }
 
+    public void printDocument() {
+        for (String key : docMap.keySet()) {
+            docMap.get(key).printInfoDoc();
+        }
+    }
 }
