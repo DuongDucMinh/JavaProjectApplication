@@ -17,9 +17,9 @@
    <center>
       <AnchorPane prefHeight="958.0" prefWidth="201.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="vboxZone" alignment="TOP_RIGHT" layoutX="-6.0" layoutY="275.2" prefHeight="638.0" prefWidth="388.0" spacing="15.0" AnchorPane.topAnchor="320.0">
+            <VBox fx:id="vboxZone" alignment="TOP_RIGHT" layoutX="-24.0" layoutY="275.2" prefHeight="638.0" prefWidth="406.0" spacing="15.0" AnchorPane.topAnchor="320.0">
                <children>
-                  <TextField fx:id="usernameField" prefHeight="44.0" prefWidth="324.0" promptText="Enter Username or Email" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80; -fx-text-fill: red;">
+                  <TextField fx:id="usernameField" prefHeight="44.0" prefWidth="324.0" promptText="Enter Username or Email" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;">
                      <font>
                         <Font name="AvenirLTStd-Roman" size="12.0" />
                      </font>
@@ -29,7 +29,7 @@
                   </TextField>
                   <PasswordField fx:id="enterPasswordField" prefHeight="44.0" prefWidth="282.0" promptText="Enter Password" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;" />
                   <PasswordField fx:id="confirmPasswordField" prefHeight="44.0" prefWidth="282.0" promptText="Confirm Password" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;" />
-                  <DatePicker fx:id="dateofbirthField" prefHeight="32.0" prefWidth="385.0" promptText="Date of Birth" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;">
+                  <DatePicker fx:id="dateofbirthField" prefHeight="29.0" prefWidth="406.0" promptText="Date of Birth" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -92,20 +92,15 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <VBox fx:id="invalidInfoField" layoutY="564.0" prefHeight="210.0" prefWidth="218.0" spacing="10.0">
+            <VBox fx:id="invalidInfoField" layoutX="-23.0" layoutY="564.0" prefHeight="210.0" prefWidth="241.0" spacing="10.0">
                <children>
-                  <Label text="Invalid Username!" textFill="RED" />
-                  <Label layoutX="133.0" layoutY="10.0" prefHeight="53.0" prefWidth="191.0" text="Password must be at least 8 characters with letter and number, no special or non-ASCII characters." textFill="RED" wrapText="true" />
+                  <Label fx:id="errorMessageLabel" textFill="RED" wrapText="true" />
                </children>
             </VBox>
          </children>
       </AnchorPane>
    </center>
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="testButton" layoutX="34.0" layoutY="171.0" mnemonicParsing="false" onAction="#TestButtonOnAction" text="Button" />
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
 </BorderPane>

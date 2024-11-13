@@ -17,6 +17,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Iterator;
+import java.util.PriorityQueue;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,14 +28,6 @@ public class RegisterController implements Initializable {
     private Button registerButton;
     @FXML
     private Button backButton;
-    @FXML
-    private Label emailMessageLabel;
-    @FXML
-    private Label usernameMessageLabel;
-    @FXML
-    private Label passwordMessageLabel;
-    @FXML
-    private Label confirmPasswordMessageLabel;
     @FXML
     private Label registerMessageLabel;
     @FXML
@@ -48,65 +42,87 @@ public class RegisterController implements Initializable {
     private VBox invalidInfoField;
     @FXML
     private Button testButton;
+    @FXML
+    private Label errorMessageLabel;
+    private PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+    public String[] errorMessage = new String[3];
     private boolean isValidEmail;
 
-
-    //public void initMessage
+    public void initMessage() {
+        errorMessage[0] = "Invalid Username or Email.";
+        errorMessage[1] = "Password must be at least 8 characters"
+                + "with letter and number, no special or non-ASCII characters.";
+        errorMessage[2] = "The passwords you entered do not match.";
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //File brandingFile = new File("...");
         //Image brandingImage = new Image(brandingFile.toURL().toString());
-        usernameMessageLabel.setText("jfksjdflsf");
-        passwordMessageLabel.setText("Password must be at least 8 characters" +
-                " with letter and number, no special or non-ASCII characters.");
 
 //        if (invalidInfoField.getChildren() != null) {
 //            invalidInfoField.getChildren().get(0).setVisible(true);
 //        }
 
+        initMessage();
         usernameField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {  // If focus is lost
                 if (!isValidUsername(usernameField.getText())) {
-                    usernameMessageLabel.setText("Invalid username.");
-                    System.out.println(usernameMessageLabel.getText());
-                    if (!vboxZone.getChildren().contains(usernameMessageLabel)) {
-                        vboxZone.getChildren().add(1, usernameMessageLabel);
+                    if (!pq.contains(0)) {
+                        pq.add(0);
+                        //System.out.print(pq.size());
                     }
                 }
                 else {
-                    usernameMessageLabel.setText("");
+                    pq.remove(0);
                 }
-            }
-            else {
-                usernameMessageLabel.setText("");
+
+                if (pq.size() > 0)
+                    errorMessageLabel.setText(errorMessage[pq.peek()]);
+                else
+                    errorMessageLabel.setText("");
             }
         });
 
-//        emailField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-//            if (!newValue) {  // If focus is lost
-//                if (!isValidEmail(emailField.getText())) {
-//                    emailMessageLabel.setText("Invalid email.");
-//                }
-//                else {
-//                    emailMessageLabel.setText("");
-//                }
-//            }
-//            else {
-//                emailMessageLabel.setText("");
-//            }
-//        });
+        enterPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {  // If focus is lost
+                if (!checkPassword() && !confirmPasswordField.getText().equals("")) {
+                    if (!pq.contains(2))
+                        pq.add(2);
+                }
+                else {
+                    pq.remove(2);
+                }
+
+                if (!isValidPassword(enterPasswordField.getText())) {
+                    if (!pq.contains(1))
+                        pq.add(1);
+                }
+                else {
+                    pq.remove(1);
+                }
+
+                if (pq.size() > 0)
+                    errorMessageLabel.setText(errorMessage[pq.peek()]);
+                else
+                    errorMessageLabel.setText("");
+            }
+        });
 
         confirmPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {  // If focus is lost
                 if (!checkPassword()) {
-                    confirmPasswordMessageLabel.setText("The passwords you entered do not match.");
+                    if (!pq.contains(2))
+                        pq.add(2);
+
                 }
                 else {
-                    confirmPasswordMessageLabel.setText("");
+                    pq.remove(2);
                 }
-            }
-            else {
-                confirmPasswordMessageLabel.setText("");
+                if (pq.size() > 0)
+                    errorMessageLabel.setText(errorMessage[pq.peek()]);
+                else
+                    errorMessageLabel.setText("");
             }
         });
 
@@ -133,6 +149,16 @@ public class RegisterController implements Initializable {
         return username.matches(regex);
     }
 
+    public boolean isValidPassword(String password) {
+        // Regular expression to check password:
+        // - At least 8 characters long
+        // - Contains letters and numbers only (no special characters)
+        // - Must contain at least one letter and one number
+        String regex = "^(?=.*[A-Za-z])(?=.*\\d).{8,}$";
+
+        return password.matches(regex);
+    }
+
     public boolean checkPassword() {
         return (enterPasswordField.getText().equals(confirmPasswordField.getText()));
     }
@@ -147,20 +173,12 @@ public class RegisterController implements Initializable {
         return matcher.matches();
     }
 
-    public boolean checkInformation() {
-        boolean ok = true;
-        if (!isValidUsername(usernameField.getText())) {
-            invalidInfoField.getChildren().get(0).setVisible(true);
-        }
-        return ok;
-    }
-
     public void usernameFieldOnAction(javafx.event.ActionEvent event) {
 
     }
 
     public void registerButtonOnAction(javafx.event.ActionEvent event) {
-        if (checkInformation() == true) {
+        if (errorMessageLabel.getText().equals("") == true) {
             registerMessageLabel.setText("User registered successfully!");
             registerUser();
         }
