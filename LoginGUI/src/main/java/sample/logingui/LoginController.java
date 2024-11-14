@@ -13,7 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
+import javax.swing.text.html.ImageView;
 import javax.xml.transform.Result;
+import java.awt.*;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
@@ -30,11 +32,11 @@ public class LoginController implements Initializable {
     private TextField usernameField;
     @FXML
     private PasswordField enterPasswordField;
-
+    @FXML
+    private ImageView brandingImageView;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //File brandingFile = new File("...");
-        //Image brandingImage = new Image(brandingFile.toURL().toString());
+
     }
 
     public void loginButtonOnAction(ActionEvent event) {
