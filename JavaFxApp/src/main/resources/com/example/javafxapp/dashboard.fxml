@@ -60,7 +60,7 @@
                   <AnchorPane layoutX="11.0" layoutY="34.0" prefHeight="498.0" prefWidth="222.4" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Circle fx:id="circle_image" fill="#313c46" layoutX="111.0" layoutY="77.0" radius="63.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Button fx:id="edit_btn" layoutX="68.0" layoutY="30.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="86.0" styleClass="edit-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="edit_btn1" layoutX="68.0" layoutY="30.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="86.0" styleClass="edit-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView fx:id="edit_btn" fill="WHITE" glyphName="EDIT" selectionEnd="0" size="2em" />
                            </graphic>
@@ -79,7 +79,7 @@
                         <Button fx:id="issueBooks_btn" layoutX="27.0" layoutY="293.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Issue Books" />
                         <Button fx:id="returnBooks_btn" layoutX="27.0" layoutY="338.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Return Books" />
                         <Line endX="100.0" layoutX="103.0" layoutY="225.0" startX="-87.60003662109375" stroke="WHITE" />
-                        <Button fx:id="logout_btn" layoutX="14.0" layoutY="442.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="logout_btn1" layoutX="14.0" layoutY="442.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView fx:id="logout_btn" fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
                            </graphic>
@@ -117,9 +117,9 @@
                               <Button fx:id="take_btn" layoutX="139.0" layoutY="275.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@dashboardDesign.css" text="Take" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="availableBooks_tableView" layoutX="270.0" layoutY="13.0" prefHeight="472.0" prefWidth="480.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                        <AnchorPane layoutX="270.0" layoutY="13.0" prefHeight="472.0" prefWidth="480.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <TableView fx:id="col_ab_bookTitle" layoutX="12.0" layoutY="12.0" onSort="#availableBooks_tableView" prefHeight="448.0" prefWidth="456.0">
+                              <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="12.0" prefHeight="448.0" prefWidth="456.0">
                                 <columns>
                                   <TableColumn fx:id="col_ab_bookTitle" prefWidth="134.40005493164062" text="Book Title" />
                                   <TableColumn fx:id="col_ab_Author" prefWidth="97.59994506835938" text="Author" />

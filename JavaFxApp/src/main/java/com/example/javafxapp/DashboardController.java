@@ -3,8 +3,7 @@ package com.example.javafxapp;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
-//import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.event.ActionEvent;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +25,9 @@ public class DashboardController implements Initializable {
     private ImageView availableBooks_imageView;
 
     @FXML
+    private TableView<?> availableBooks_tableView;
+
+    @FXML
     private Label availableBooks_title;
 
     @FXML
@@ -35,7 +37,7 @@ public class DashboardController implements Initializable {
     private TableColumn<?, ?> col_ab_Author;
 
     @FXML
-    private TableView<?> col_ab_bookTitle;
+    private TableColumn<?, ?> col_ab_bookTitle;
 
     @FXML
     private TableColumn<?, ?> col_ab_category;
@@ -43,14 +45,14 @@ public class DashboardController implements Initializable {
     @FXML
     private TableColumn<?, ?> col_ab_publishedDate;
 
-    /*@FXML
-    private FontAwesomeIconView edit_btn;*/
+    @FXML
+    private FontAwesomeIconView edit_btn;
 
     @FXML
     private Button issueBooks_btn;
 
     @FXML
-    private Button logout_btn;
+    private FontAwesomeIconView logout_btn;
 
     @FXML
     private Button returnBooks_btn;
@@ -67,12 +69,10 @@ public class DashboardController implements Initializable {
     @FXML
     private Label userName_label;
 
-    @FXML
-    private TableView<?> availableBooks_tableView;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
 }

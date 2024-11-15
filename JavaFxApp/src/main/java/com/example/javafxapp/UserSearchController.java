@@ -44,16 +44,16 @@ public class UserSearchController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getDBConnection();
 
-        String userViewQuery = "SELECT customerNumber,contactLastName, contactFirstName FROM customers";
+        String userViewQuery = "SELECT account_id, firstname, lastname FROM user_account";
 
         try {
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(userViewQuery);
 
             while (queryOutput.next()) {
-                int userID = queryOutput.getInt("customerNumber");
-                String firstName = queryOutput.getString("contactFirstName");
-                String lastName = queryOutput.getString("contactLastName");
+                int userID = queryOutput.getInt("account_id");
+                String firstName = queryOutput.getString("firstname");
+                String lastName = queryOutput.getString("lastname");
 
                 userSearchModelObservableList.add(new UserSearchModel(userID, firstName, lastName));
             }
