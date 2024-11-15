@@ -1,12 +1,12 @@
 
 .top-from{
-    -fx-background-color: #fff;
-    -fx-border-color: #000;
+    -fx-background-color: #000;
+    -fx-border-color: #fff;
     -fx-border-width: .2px .2px .5px .2px;
 }
 
 .semiTop-form{
-    -fx-border-color: #000;
+    -fx-border-color: #fff;
     -fx-border-width: .0px .0px .5px .0px;
 }
 
@@ -34,12 +34,12 @@
 }
 
 .bars:hover{
-    -fx-background-color: #d6d6d6;
+    -fx-background-color: #000000;
     -fx-background-radius: 5px;
 }
 
 .nav-form{
-    -fx-background-color: linear-gradient(to bottom right, #252d50, #324f6b);
+    -fx-background-color: linear-gradient(to bottom right, #000000, #000000);
 }
 
 .edit-btn{
@@ -47,22 +47,24 @@
     -fx-cursor: hand;
 }
 
+
 .nav-btn{
-    -fx-background-color: linear-gradient(to bottom right, #344275, #3a6389);
+    -fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);
     -fx-background-radius: 5px;
     -fx-cursor: hand;
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
     -fx-text-fill: #fff;
-    -fx-font-family: "Microsoft Sans Serif";
+    -fx-font-weight: bold;
+    -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
 .nav-btn:hover{
-    -fx-background-color: linear-gradient(to bottom right, #46589a, #4278a7);
+    -fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);
     -fx-background-radius: 5px;
 }
 
 .logout-btn{
-    -fx-background-color: #366d9d;
+    -fx-background-color: #C97C00;
     -fx-background-radius: 10px;
     -fx-cursor: hand;
 }
@@ -73,14 +75,14 @@
 }
 
 .card-form{
-    -fx-background-color: #f8f8f8;
-    -fx-border-color: #454368;
+    -fx-background-color: #000000;
+    -fx-border-color: #ffffff;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
 
 .image-card{
-    -fx-background-color: #fff;
+    -fx-background-color: #404040;
     -fx-border-color: #000;
 }
 
@@ -90,6 +92,8 @@
     -fx-font-size: 15px;
     -fx-cursor: hand;
     -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
 .save-btn:hover{
@@ -102,6 +106,8 @@
     -fx-font-size: 15px;
     -fx-cursor: hand;
     -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
 .take-btn:hover{

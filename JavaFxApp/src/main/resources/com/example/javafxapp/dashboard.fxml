@@ -15,21 +15,18 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.DashboardController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="600.0" prefWidth="986.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutY="-14.0" prefHeight="42.0" prefWidth="995.0" styleClass="top-from" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button alignment="CENTER" layoutX="919.0" layoutY="2.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
+                        <Button alignment="CENTER" layoutX="935.0" layoutY="2.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="66.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
                            </graphic>
                         </Button>
-                        <Button alignment="CENTER" layoutX="865.0" layoutY="2.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="46.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
-                           <font>
-                              <Font size="96.0" />
-                           </font>
+                        <Button layoutX="870.0" layoutY="2.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="MINUS" selectionStart="0" size="1.2em" />
                            </graphic>
@@ -41,14 +38,14 @@
                         <FontAwesomeIconView glyphName="BARS" size="2em" tabSize="0" />
                      </graphic>
                   </Button>
-                  <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css">
+                  <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css" textFill="WHITE">
                      <graphic>
-                        <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="2em" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="2em" />
                      </graphic>
                   </Button>
-                  <Label layoutX="85.0" layoutY="52.0" prefHeight="30.0" prefWidth="218.0" text="Library Managerment">
+                  <Label layoutX="85.0" layoutY="52.0" prefHeight="30.0" prefWidth="218.0" text="Library Managerment" textFill="WHITE">
                      <font>
-                        <Font name="Segoe UI Black" size="20.0" />
+                        <Font name="AvenirLTStd-Black" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -65,28 +62,37 @@
                               <FontAwesomeIconView fx:id="edit_btn" fill="WHITE" glyphName="EDIT" selectionEnd="0" size="2em" />
                            </graphic>
                         </Button>
-                        <Label alignment="TOP_CENTER" layoutX="62.0" layoutY="152.0" prefHeight="18.0" prefWidth="97.0" style="-fx-text-fill: white;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+                        <Label alignment="TOP_CENTER" layoutX="62.0" layoutY="152.0" prefHeight="18.0" prefWidth="97.0" style="-fx-text-fill: #cc9600;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="Microsoft Sans Serif" size="18.0" />
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="userName_label" alignment="CENTER" layoutX="10.0" layoutY="180.0" prefHeight="23.0" prefWidth="201.0" style="-fx-text-fill: white;" text="Dudumi" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="userName_label" alignment="CENTER" layoutX="10.0" layoutY="180.0" prefHeight="24.0" prefWidth="200.0" style="-fx-text-fill: #ca891d;" text="Dudumi" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="Microsoft Sans Serif" size="20.0" />
+                              <Font name="AvenirLTStd-Heavy" size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books" />
-                        <Button fx:id="issueBooks_btn" layoutX="27.0" layoutY="293.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Issue Books" />
-                        <Button fx:id="returnBooks_btn" layoutX="27.0" layoutY="338.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Return Books" />
+                        <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
+                           <font>
+                              <Font name="AvenirLTStd-Heavy" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="issueBooks_btn" layoutX="27.0" layoutY="293.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Issue Books">
+                           <font>
+                              <Font name="AvenirLTStd-Roman" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="returnBooks_btn" layoutX="27.0" layoutY="338.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Return Books">
+                           <font>
+                              <Font name="AvenirLTStd-Heavy" size="12.0" />
+                           </font></Button>
                         <Line endX="100.0" layoutX="103.0" layoutY="225.0" startX="-87.60003662109375" stroke="WHITE" />
-                        <Button fx:id="logout_btn1" layoutX="14.0" layoutY="442.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="logout_btn" layoutX="14.0" layoutY="442.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
-                              <FontAwesomeIconView fx:id="logout_btn" fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
+                              <FontAwesomeIconView fx:id="logout_btn1" fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
                            </graphic>
                         </Button>
                         <Label layoutX="75.0" layoutY="446.0" style="-fx-text-fill: white;" text="Sign out" textFill="#fafafa">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="AvenirLTStd-Heavy" size="14.0" />
                            </font>
                         </Label>
                         <Button fx:id="savedBooks_btn" layoutX="27.0" layoutY="382.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Saved Books" />
@@ -107,25 +113,31 @@
                                     <ImageView fx:id="availableBooks_imageView" fitHeight="170.0" fitWidth="134.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button fx:id="save_btn" layoutX="22.0" layoutY="275.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@dashboardDesign.css" text="Save" />
-                              <Label fx:id="availableBooks_title" layoutX="31.0" layoutY="201.0" text="Programming Language">
+                              <Button fx:id="save_btn" layoutX="22.0" layoutY="275.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@dashboardDesign.css" text="Save">
                                  <font>
-                                    <Font name="Microsoft Sans Serif" size="16.0" />
+                                    <Font name="AvenirLTStd-Black" size="13.0" />
+                                 </font></Button>
+                              <Label fx:id="availableBooks_title" layoutX="31.0" layoutY="201.0" text="Programming Language" textFill="#cc9600">
+                                 <font>
+                                    <Font name="AvenirLTStd-Roman" size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="103.0" layoutY="236.0" text="Title" />
+                              <Label layoutX="103.0" layoutY="236.0" text="Title" textFill="#ca891d">
+                                 <font>
+                                    <Font name="AvenirLTStd-Roman" size="14.0" />
+                                 </font></Label>
                               <Button fx:id="take_btn" layoutX="139.0" layoutY="275.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@dashboardDesign.css" text="Take" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="270.0" layoutY="13.0" prefHeight="472.0" prefWidth="480.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="12.0" prefHeight="448.0" prefWidth="456.0">
-                                <columns>
-                                  <TableColumn fx:id="col_ab_bookTitle" prefWidth="134.40005493164062" text="Book Title" />
-                                  <TableColumn fx:id="col_ab_Author" prefWidth="97.59994506835938" text="Author" />
-                                    <TableColumn fx:id="col_ab_category" prefWidth="103.2000732421875" text="Category" />
-                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="123.199951171875" text="Published Date" />
-                                </columns>
+                              <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="12.0" prefHeight="448.0" prefWidth="456.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
+                                 <columns>
+                                    <TableColumn fx:id="col_ab_bookTitle1" prefWidth="134.40005493164062" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_ab_Author" prefWidth="97.59994506835938" style="-fx-background-color: #CC9600;" text="Author" />
+                                    <TableColumn fx:id="col_ab_category" prefWidth="103.2000732421875" style="-fx-background-color: #CC9600;" text="Category" />
+                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="123.199951171875" style="-fx-background-color: #CC9600;" text="Published Date" />
+                                 </columns>
                               </TableView>
                            </children></AnchorPane>
                         <Separator layoutX="253.0" layoutY="14.0" orientation="VERTICAL" prefHeight="470.0" prefWidth="2.0" />

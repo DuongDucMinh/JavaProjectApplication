@@ -8,9 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,14 +33,25 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField enterPasswordField;
     @FXML
+    private ImageView brandingImageView;
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        File file = new File("images/_@nethbookpoint_com__1_.png");
+        Image brandingImage = new Image(file.toURI().toString());
+        brandingImageView.setImage(brandingImage);
     }
 
-    public void loginButtonOnAction(ActionEvent event) {
+    public void loginButtonOnAction() throws IOException {
         if (!usernameField.getText().isBlank()
                 && !enterPasswordField.getText().isBlank()) {
             validateLogin();
+
+            if (loginMessageLabel.getText().equals("Congratulations!")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+                Stage dashboardStage = (Stage) loginButton.getScene().getWindow();
+                dashboardStage.setScene(new Scene(fxmlLoader.load(), 986, 600));
+                dashboardStage.show();
+            }
         }
         else {
             loginMessageLabel.setText("Please enter username and password");
