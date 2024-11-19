@@ -21,24 +21,24 @@
                <children>
                   <AnchorPane layoutY="-14.0" prefHeight="42.0" prefWidth="995.0" styleClass="top-from" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button alignment="CENTER" layoutX="935.0" layoutY="2.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="66.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="close" alignment="CENTER" layoutX="935.0" layoutY="2.0" mnemonicParsing="false" onAction="#exit" prefHeight="38.0" prefWidth="66.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
                            </graphic>
                         </Button>
-                        <Button layoutX="870.0" layoutY="2.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="minimize" layoutX="870.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="38.0" prefWidth="64.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="MINUS" selectionStart="0" size="1.2em" />
                            </graphic>
                         </Button>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css">
+                  <Button fx:id="bars_btn" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css">
                      <graphic>
-                        <FontAwesomeIconView glyphName="BARS" size="2em" tabSize="0" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="BARS" size="2em" tabSize="0" />
                      </graphic>
                   </Button>
-                  <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css" textFill="WHITE">
+                  <Button fx:id="arrow_btn" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css" textFill="WHITE">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="2em" />
                      </graphic>
@@ -54,12 +54,38 @@
          <left>
             <AnchorPane prefHeight="498.0" prefWidth="222.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="11.0" layoutY="34.0" prefHeight="498.0" prefWidth="222.4" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="halfNav_form" prefHeight="498.0" prefWidth="77.0">
+                     <children>
+                        <Circle fx:id="smallCircle_image" fill="#354a5e" layoutX="39.0" layoutY="42.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Line endX="104.39994812011719" endY="-7.62939453125E-6" layoutX="-36.0" layoutY="82.0" startX="45.992881774902344" startY="-7.62939453125E-6" stroke="WHITE" />
+                        <Button fx:id="halfNav_availableBtn" layoutX="12.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CLIPBOARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="halfNav_takeBtn" layoutX="12.0" layoutY="192.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="BOOK" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="halfNav_returnBtn" layoutX="12.0" layoutY="249.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FILE" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="halfNav_saveBtn" layoutX="12.0" layoutY="307.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="BOOKMARK" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="nav_form" layoutX="11.0" layoutY="34.0" prefHeight="498.0" prefWidth="222.4" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Circle fx:id="circle_image" fill="#313c46" layoutX="111.0" layoutY="77.0" radius="63.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Button fx:id="edit_btn1" layoutX="68.0" layoutY="30.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="86.0" styleClass="edit-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="edit_btn" layoutX="68.0" layoutY="30.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="86.0" styleClass="edit-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
-                              <FontAwesomeIconView fx:id="edit_btn" fill="WHITE" glyphName="EDIT" selectionEnd="0" size="2em" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="EDIT" selectionEnd="0" size="2em" />
                            </graphic>
                         </Button>
                         <Label alignment="TOP_CENTER" layoutX="62.0" layoutY="152.0" prefHeight="18.0" prefWidth="97.0" style="-fx-text-fill: #cc9600;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
@@ -87,7 +113,7 @@
                         <Line endX="100.0" layoutX="103.0" layoutY="225.0" startX="-87.60003662109375" stroke="WHITE" />
                         <Button fx:id="logout_btn" layoutX="14.0" layoutY="442.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
-                              <FontAwesomeIconView fx:id="logout_btn1" fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
                            </graphic>
                         </Button>
                         <Label layoutX="75.0" layoutY="446.0" style="-fx-text-fill: white;" text="Sign out" textFill="#fafafa">
@@ -102,7 +128,7 @@
             </AnchorPane>
          </left>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane fx:id="availableBooks_form" layoutX="63.0" layoutY="29.0" prefHeight="497.6" prefWidth="764.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -133,14 +159,14 @@
                            <children>
                               <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="12.0" prefHeight="448.0" prefWidth="456.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
                                  <columns>
-                                    <TableColumn fx:id="col_ab_bookTitle1" prefWidth="134.40005493164062" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="134.40005493164062" style="-fx-background-color: #CC9600;" text="Book Title" />
                                     <TableColumn fx:id="col_ab_Author" prefWidth="97.59994506835938" style="-fx-background-color: #CC9600;" text="Author" />
                                     <TableColumn fx:id="col_ab_category" prefWidth="103.2000732421875" style="-fx-background-color: #CC9600;" text="Category" />
                                     <TableColumn fx:id="col_ab_publishedDate" prefWidth="123.199951171875" style="-fx-background-color: #CC9600;" text="Published Date" />
                                  </columns>
                               </TableView>
                            </children></AnchorPane>
-                        <Separator layoutX="253.0" layoutY="14.0" orientation="VERTICAL" prefHeight="470.0" prefWidth="2.0" />
+                        <Separator layoutX="257.0" layoutY="14.0" orientation="VERTICAL" prefHeight="470.0" prefWidth="2.0" />
                      </children>
                   </AnchorPane>
                </children>
