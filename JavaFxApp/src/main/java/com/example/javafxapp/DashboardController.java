@@ -75,25 +75,25 @@ public class DashboardController implements Initializable {
     private ImageView availableBooks_imageView;
 
     @FXML
-    private TableView<?> availableBooks_tableView;
+    private TableView<AvailableBooks> availableBooks_tableView;
+
+    @FXML
+    private TableColumn<AvailableBooks, String> col_ab_Author;
+
+    @FXML
+    private TableColumn<AvailableBooks, String> col_ab_bookTitle;
+
+    @FXML
+    private TableColumn<AvailableBooks, String> col_ab_category;
+
+    @FXML
+    private TableColumn<AvailableBooks, String> col_ab_publishedDate;
 
     @FXML
     private Label availableBooks_title;
 
     @FXML
     private Circle circle_image;
-
-    @FXML
-    private TableColumn<?, ?> col_ab_Author;
-
-    @FXML
-    private TableColumn<?, ?> col_ab_bookTitle;
-
-    @FXML
-    private TableColumn<?, ?> col_ab_category;
-
-    @FXML
-    private TableColumn<?, ?> col_ab_publishedDate;
 
     @FXML
     private Button edit_btn;

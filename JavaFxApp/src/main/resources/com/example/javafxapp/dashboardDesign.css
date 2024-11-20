@@ -11,7 +11,7 @@
 }
 
 .close-btn{
-    -fx-background-color: transparent;
+    -fx-background-color: #404040;
     -fx-cursor: hand;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .minimize-btn{
-    -fx-background-color: transparent;
+    -fx-background-color: #404040;
     -fx-cursor: hand;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .logout-btn:hover{
-    -fx-background-color: #396fc6;
+    -fx-background-color: #F0B000;
     -fx-background-radius: 10px;
 }
 
@@ -112,4 +112,67 @@
 
 .take-btn:hover{
     -fx-background-color: #b356bb;
+}
+
+.textField_take{
+    -fx-background-color: #404040;
+    -fx-background-radius: 5px;
+    -fx-border-color: #fff;
+    -fx-border-radius: 5px;
+    -fx-border-width: .4px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-font-family: "Avenir LT Std 55 Roman";
+}
+
+.textField_take:focused{
+    -fx-border-width: .8px;
+}
+
+.label_take{
+    -fx-background-color: #404040;
+    -fx-padding: 0px 0px 0px 8px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-border-color: #fff;
+    -fx-border-radius: 5px;
+    -fx-border-width: .4px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Avenir LT Std 55 Roman";
+}
+
+.clear-btn{
+    -fx-background-color: #376282;
+    -fx-background-radius:15px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-cursor:hand;
+}
+
+.clear-btn:hover{
+    -fx-background-color:#4386b5;
+}
+
+.return-btn{
+    -fx-background-color:#31647f;
+    -fx-background-radius:15px;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:15px;
+}
+
+.return-btn:hover{
+    -fx-background-color:#3686ae;
+}
+
+.unSave-btn{
+    -fx-background-color:#8c2d2d;
+    -fx-background-radius:15px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-cursor:hand;
+}
+
+.unSave-btn:hover{
+    -fx-background-color:#c54d5d;
 }
