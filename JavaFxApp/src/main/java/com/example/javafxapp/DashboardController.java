@@ -1,24 +1,24 @@
 package com.example.javafxapp;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Objects;
+import java.sql.*;
 import java.util.ResourceBundle;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -75,6 +75,9 @@ public class DashboardController implements Initializable {
     private ImageView availableBooks_imageView;
 
     @FXML
+    private TextField keywordTextField;
+
+    @FXML
     private TableView<AvailableBooks> availableBooks_tableView;
 
     @FXML
@@ -121,15 +124,79 @@ public class DashboardController implements Initializable {
 
     private Image image;
 
-    private Connection connect;
+    /*private Connection connect;
     private PreparedStatement prepare;
     private Statement statement;
-    private ResultSet result;
+    private ResultSet result;*/
 
     private String comboBox[] = {"Male", "Female", "Others"};
 
     private double x = 0;
     private double y = 0;
+
+    ObservableList<AvailableBooks> bookSearchObservableList = FXCollections.observableArrayList();
+
+    public void showAvailableBooks() {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getDBConnection();
+
+        String bookViewQuery = "SELECT title, category, author, image, date FROM library_books";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(bookViewQuery);
+
+            while (queryOutput.next()) {
+                String title = queryOutput.getString("title");
+                String genre = queryOutput.getString("category");
+                String author = queryOutput.getString("author");
+                String image = queryOutput.getString("image");
+                Date date = queryOutput.getDate("date");
+
+                bookSearchObservableList.add(new AvailableBooks(title, author, genre, image, date));
+            }
+
+            col_ab_bookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+            col_ab_category.setCellValueFactory(new PropertyValueFactory<>("genre"));
+            col_ab_Author.setCellValueFactory(new PropertyValueFactory<>("author"));
+            col_ab_publishedDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+            availableBooks_tableView.setItems(bookSearchObservableList);
+
+            // Danh sach loc ban dau
+            FilteredList<AvailableBooks> filteredData = new FilteredList<>(bookSearchObservableList, b -> true);
+
+            // Thêm một ChangeListener vào thuộc tính textProperty() của keywordTextField => lắng nghe sự thay đổi của văn bản trong TextField.
+            keywordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+                // Cập nhật điều kiện lọc (Predicate) của filteredData mỗi khi văn bản trong TextField thay đổi.
+                filteredData.setPredicate(AvailableBooks -> {
+
+                    if (newValue.isBlank() || newValue.isEmpty()) {
+                        return true;
+                    }
+
+                    String searchKeywords = newValue.toLowerCase();
+                    // no match found
+                    return AvailableBooks.getTitle().toLowerCase().contains(searchKeywords)
+                            || AvailableBooks.getAuthor().toLowerCase().contains(searchKeywords)
+                            || AvailableBooks.getGenre().toLowerCase().contains(searchKeywords)
+                            || AvailableBooks.getDate().toString().contains(searchKeywords);
+                });
+            });
+
+            SortedList<AvailableBooks> sortedData = new SortedList<>(filteredData);
+
+            // Liên kết kết quả được sắp xếp với Chế độ xem bảng
+            sortedData.comparatorProperty().bind(availableBooks_tableView.comparatorProperty());
+
+            // Apply filtered and sorted data to the Table View
+            availableBooks_tableView.setItems(sortedData);
+
+        } catch (SQLException e) {
+            Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+    }
 
     public void sliderArrow() {
 
@@ -236,5 +303,6 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        showAvailableBooks();
     }
 }
