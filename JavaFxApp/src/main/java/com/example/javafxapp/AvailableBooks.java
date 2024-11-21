@@ -3,13 +3,15 @@ package com.example.javafxapp;
 import java.sql.Date;
 
 public class AvailableBooks {
+    private final int bookId;
     private final String title;
     private final String author;
     private final String genre;
     private final String image;
     private final Date date;
 
-    public AvailableBooks(String title, String author, String genre, String image, Date date){
+    public AvailableBooks(Integer bookId, String title, String author, String genre, String image, Date date){
+        this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -17,6 +19,9 @@ public class AvailableBooks {
         this.date = date;
     }
 
+    public int getBookId(){
+        return bookId;
+    }
     public String getTitle(){
         return title;
     }

@@ -81,6 +81,9 @@ public class DashboardController implements Initializable {
     private TableView<AvailableBooks> availableBooks_tableView;
 
     @FXML
+    private TableColumn<AvailableBooks, Integer> col_ab_bookID;
+
+    @FXML
     private TableColumn<AvailableBooks, String> col_ab_Author;
 
     @FXML
@@ -140,22 +143,24 @@ public class DashboardController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getDBConnection();
 
-        String bookViewQuery = "SELECT title, category, author, image, date FROM library_books";
+        String bookViewQuery = "SELECT * FROM library_books";
 
         try {
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(bookViewQuery);
 
             while (queryOutput.next()) {
+                int bookId = queryOutput.getInt("book_id");
                 String title = queryOutput.getString("title");
                 String genre = queryOutput.getString("category");
                 String author = queryOutput.getString("author");
                 String image = queryOutput.getString("image");
                 Date date = queryOutput.getDate("date");
 
-                bookSearchObservableList.add(new AvailableBooks(title, author, genre, image, date));
+                bookSearchObservableList.add(new AvailableBooks(bookId, title, author, genre, image, date));
             }
 
+            col_ab_bookID.setCellValueFactory(new PropertyValueFactory<>("bookId"));
             col_ab_bookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
             col_ab_category.setCellValueFactory(new PropertyValueFactory<>("genre"));
             col_ab_Author.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -180,7 +185,8 @@ public class DashboardController implements Initializable {
                     return AvailableBooks.getTitle().toLowerCase().contains(searchKeywords)
                             || AvailableBooks.getAuthor().toLowerCase().contains(searchKeywords)
                             || AvailableBooks.getGenre().toLowerCase().contains(searchKeywords)
-                            || AvailableBooks.getDate().toString().contains(searchKeywords);
+                            || AvailableBooks.getDate().toString().contains(searchKeywords)
+                            || (AvailableBooks.getBookId() + "").contains(searchKeywords);
                 });
             });
 

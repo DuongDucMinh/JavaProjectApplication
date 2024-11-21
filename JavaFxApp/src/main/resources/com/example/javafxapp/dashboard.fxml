@@ -167,10 +167,11 @@
                            <children>
                               <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="57.0" prefHeight="401.0" prefWidth="456.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
                                  <columns>
-                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="134.40005493164062" style="-fx-background-color: #CC9600;" text="Book Title" />
-                                    <TableColumn fx:id="col_ab_Author" prefWidth="95.199951171875" style="-fx-background-color: #CC9600;" text="Author" />
-                                    <TableColumn fx:id="col_ab_category" prefWidth="106.39999389648438" style="-fx-background-color: #CC9600;" text="Category" />
-                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="123.199951171875" style="-fx-background-color: #CC9600;" text="Published Date" />
+                                    <TableColumn fx:id="col_ab_bookID" prefWidth="31.200042724609375" style="-fx-background-color: #CC9600;" text="Id" />
+                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="125.5999755859375" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_ab_Author" prefWidth="93.60000610351562" style="-fx-background-color: #CC9600;" text="Author" />
+                                    <TableColumn fx:id="col_ab_category" prefWidth="107.20001220703125" style="-fx-background-color: #CC9600;" text="Category" />
+                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="95.199951171875" style="-fx-background-color: #CC9600;" text="Published Date" />
                                  </columns>
                               </TableView>
                               <TextField fx:id="keywordTextField" layoutX="103.0" layoutY="14.0" prefHeight="26.0" prefWidth="364.0" promptText="Keywords..." styleClass="textField_take" stylesheets="@dashboardDesign.css" />
