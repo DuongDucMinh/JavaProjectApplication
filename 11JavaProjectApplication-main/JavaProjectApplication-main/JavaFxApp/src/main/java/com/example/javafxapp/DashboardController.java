@@ -233,9 +233,16 @@ public class DashboardController implements Initializable {
     }
 
     public void addBookMenuItemOnAction(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("addbook.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("addBook.fxml"));
         Stage dashboardStage = new Stage();
         dashboardStage.setScene(new Scene(fxmlLoader.load(), 452, 509));
+        dashboardStage.show();
+    }
+
+    public void deleteBookMenuItemOnAction(ActionEvent event) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("deleteBook.fxml"));
+        Stage dashboardStage = new Stage();
+        dashboardStage.setScene(new Scene(fxmlLoader.load(), 845, 705));
         dashboardStage.show();
     }
 

@@ -1,37 +1,59 @@
 package com.example.javafxapp;
 
+import java.util.Date;
+
 public class UserSearchModel {
-    int userID;
-    String firstName;
-    String lastName;
+    int bookID;
+    String title;
+    String category;
+    String author;
+    Date publishedDate;
 
-    public UserSearchModel(int userID, String firstName, String lastName) {
-        this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public UserSearchModel(int bookID, String title, String author, String category, Date publishedDate) {
+        this.bookID = bookID;
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.publishedDate = publishedDate;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Date getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPublishedDate(Date publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
-    public String getLastName() {
-        return lastName;
+    public int getBookID() {
+        return bookID;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
