@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="705.0" prefWidth="845.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.UserSearchController">
+   <children>
+      <Label layoutX="332.0" layoutY="38.0" text="Delete Book" textFill="#cc9600">
+         <font>
+            <Font name="AvenirLTStd-Heavy" size="31.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="38.0" prefWidth="845.0">
+         <children>
+            <Button fx:id="minimizeButton" layoutX="719.0" layoutY="4.0" mnemonicParsing="false" onAction="#minimizeButtonOnAction" prefHeight="30.0" prefWidth="59.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="MINUS" />
+               </graphic>
+            </Button>
+            <Button fx:id="closeButton" layoutX="785.0" layoutY="4.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="30.0" prefWidth="59.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label fx:id="errorMessageLabel" layoutX="53.0" layoutY="385.0" />
+      <TableView fx:id="bookTableView" layoutX="71.0" layoutY="161.0" prefHeight="502.0" prefWidth="743.0">
+         <columns>
+            <TableColumn fx:id="bookIDTableColumn" prefWidth="59.600006103515625" text="Book ID" />
+            <TableColumn fx:id="titleTableColumn" minWidth="9.600021362304688" prefWidth="234.40003967285156" text="Title" />
+            <TableColumn fx:id="authorTableColumn" minWidth="0.0" prefWidth="109.99993896484375" text="Author" />
+            <TableColumn fx:id="categoryTableColumn" minWidth="0.0" prefWidth="148.0" text="Category" />
+            <TableColumn fx:id="publishedDateTableColumn" minWidth="0.0" prefWidth="142.79998779296875" text="Published Date" />
+            <TableColumn fx:id="actionTableColumn" prefWidth="46.800048828125" text="Action" />
+         </columns>
+      </TableView>
+      <Label layoutX="77.0" layoutY="111.0" text="Search User" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="keywordTextField" layoutX="224.0" layoutY="108.0" prefHeight="25.0" prefWidth="494.0" promptText="Keywords..." />
+   </children>
+</AnchorPane>

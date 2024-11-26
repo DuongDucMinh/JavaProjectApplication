@@ -28,11 +28,16 @@
                   <Font name="AvenirLTStd-Roman" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="publisherTextField" layoutX="10.0" layoutY="60.0" prefHeight="40.0" prefWidth="372.0" promptText="Publisher" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;">
-               <font>
-                  <Font name="AvenirLTStd-Roman" size="12.0" />
-               </font>
-            </TextField>
+            <HBox prefHeight="46.0" prefWidth="342.0" spacing="20.0">
+               <children>
+                  <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#uploadButtonOnAction" prefHeight="44.0" prefWidth="62.0" text="Upload" />
+                  <TextField fx:id="imageTextField" prefHeight="45.0" prefWidth="264.0" promptText="Path" style="-fx-prompt-text-fill: black; -fx-background-color: D6CE80;">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="12.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <HBox layoutX="53.0" layoutY="419.0" prefHeight="40.0" prefWidth="342.0" spacing="40.0" stylesheets="@dashboardDesign.css">

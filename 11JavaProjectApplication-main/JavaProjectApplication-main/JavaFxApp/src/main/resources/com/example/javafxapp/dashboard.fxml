@@ -44,6 +44,7 @@
                             <Menu mnemonicParsing="false" text="Edit">
                               <items>
                                 <MenuItem fx:id="addBookMenuItem" mnemonicParsing="false" onAction="#addBookMenuItemOnAction" text="Add Book" />
+                                    <MenuItem fx:id="deleteBookMenuItem" mnemonicParsing="false" onAction="#deleteBookMenuItemOnAction" text="Delete Book" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" text="Help">
