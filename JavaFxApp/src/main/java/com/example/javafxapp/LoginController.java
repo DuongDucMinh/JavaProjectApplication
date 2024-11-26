@@ -47,6 +47,7 @@ public class LoginController implements Initializable {
             validateLogin();
 
             if (loginMessageLabel.getText().equals("Congratulations!")) {
+                GetData.username = usernameField.getText();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
                 Stage dashboardStage = (Stage) loginButton.getScene().getWindow();
                 dashboardStage.setScene(new Scene(fxmlLoader.load(), 994, 600));

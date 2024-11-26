@@ -50,6 +50,11 @@
                         <Font name="AvenirLTStd-Medium" size="20.0" />
                      </font>
                   </Label>
+                  <Label fx:id="currentForm_label" layoutX="800.0" layoutY="55.0" prefHeight="18.0" prefWidth="177.0" style="-fx-text-fill: #CC9600;" text="Available Books" textFill="#cc9600">
+                     <font>
+                        <Font name="AvenirLTStd-Medium" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </top>
@@ -60,22 +65,22 @@
                      <children>
                         <Circle fx:id="smallCircle_image" fill="#354a5e" layoutX="39.0" layoutY="42.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
                         <Line endX="104.39994812011719" endY="-7.62939453125E-6" layoutX="-36.0" layoutY="82.0" startX="45.992881774902344" startY="-7.62939453125E-6" stroke="WHITE" />
-                        <Button fx:id="halfNav_availableBtn" layoutX="12.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="halfNav_availableBtn" layoutX="12.0" layoutY="134.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="CLIPBOARD" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="halfNav_takeBtn" layoutX="12.0" layoutY="192.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="halfNav_takeBtn" layoutX="12.0" layoutY="192.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="BOOK" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="halfNav_returnBtn" layoutX="12.0" layoutY="249.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="halfNav_returnBtn" layoutX="12.0" layoutY="249.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="FILE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="halfNav_saveBtn" layoutX="12.0" layoutY="307.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="halfNav_borrowBtn" layoutX="12.0" layoutY="307.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="BOOKMARK" size="1.5em" />
                            </graphic>
@@ -100,15 +105,15 @@
                               <Font name="AvenirLTStd-Medium" size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
+                        <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
                            <font>
                               <Font name="AvenirLTStd-Roman" size="12.0" />
                            </font></Button>
-                        <Button fx:id="issueBooks_btn" layoutX="27.0" layoutY="293.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Issue Books">
+                        <Button fx:id="issueBooks_btn" layoutX="27.0" layoutY="293.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Issue Books">
                            <font>
                               <Font name="AvenirLTStd-Roman" size="12.0" />
                            </font></Button>
-                        <Button fx:id="returnBooks_btn" layoutX="27.0" layoutY="338.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Return Books">
+                        <Button fx:id="returnBooks_btn" layoutX="27.0" layoutY="338.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Return Books">
                            <font>
                               <Font name="AvenirLTStd-Roman" size="12.0" />
                            </font></Button>
@@ -123,7 +128,7 @@
                               <Font name="AvenirLTStd-Medium" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="savedBooks_btn" layoutX="27.0" layoutY="382.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Saved Books">
+                        <Button fx:id="borrowBooks_btn" layoutX="27.0" layoutY="382.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Borrow Books">
                            <font>
                               <Font name="AvenirLTStd-Roman" size="12.0" />
                            </font></Button>
@@ -144,28 +149,63 @@
                                     <ImageView fx:id="availableBooks_imageView" fitHeight="170.0" fitWidth="134.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button fx:id="save_btn" layoutX="20.0" layoutY="353.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@dashboardDesign.css" text="Save">
+                              <Button fx:id="borrow_btn" layoutX="81.0" layoutY="353.0" mnemonicParsing="false" onAction="#borrowBooks" prefHeight="42.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@dashboardDesign.css" text="Borrow">
                                  <font>
                                     <Font name="AvenirLTStd-Roman" size="13.0" />
                                  </font></Button>
-                              <Label fx:id="availableBooks_title" layoutX="31.0" layoutY="201.0" text="Programming Language" textFill="#cc9600">
-                                 <font>
-                                    <Font name="AvenirLTStd-Roman" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="103.0" layoutY="236.0" text="Title" textFill="#ca891d">
-                                 <font>
-                                    <Font name="AvenirLTStd-Roman" size="14.0" />
-                                 </font></Label>
-                              <Button fx:id="take_btn" layoutX="140.0" layoutY="353.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@dashboardDesign.css" text="Take">
+                              <Button fx:id="take_btn" layoutX="81.0" layoutY="415.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@dashboardDesign.css" text="Take">
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="12.0" />
                                  </font></Button>
+                              <AnchorPane layoutX="16.0" layoutY="197.0" prefHeight="136.0" prefWidth="200.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" style="-fx-text-fill: white;" text="Title:" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="42.0" style="-fx-text-fill: white;" text="Author:" AnchorPane.leftAnchor="13.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="15.0" layoutY="68.0" style="-fx-text-fill: white;" text="Category:" AnchorPane.leftAnchor="13.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="11.0" layoutY="96.0" style="-fx-text-fill: white;" text="Published date:" AnchorPane.leftAnchor="13.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="availableBooks_author" layoutX="75.0" layoutY="43.0" prefHeight="18.0" prefWidth="112.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="15.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="availableBooks_category" layoutX="85.0" layoutY="68.0" prefHeight="18.0" prefWidth="93.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="18.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="availableBooks_pubDate" layoutX="119.0" layoutY="96.0" prefHeight="18.0" prefWidth="62.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="14.0">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="availableBooks_title" layoutX="59.0" layoutY="13.0" prefHeight="20.0" prefWidth="126.0" style="-fx-text-fill: #cc9600;" textFill="#cc9600">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="270.0" layoutY="13.0" prefHeight="472.0" prefWidth="480.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="57.0" prefHeight="401.0" prefWidth="456.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
+                              <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="57.0" onMouseClicked="#selectAvailableBooks" prefHeight="401.0" prefWidth="456.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
                                  <columns>
                                     <TableColumn fx:id="col_ab_bookID" prefWidth="31.200042724609375" style="-fx-background-color: #CC9600;" text="Id" />
                                     <TableColumn fx:id="col_ab_bookTitle" prefWidth="125.5999755859375" style="-fx-background-color: #CC9600;" text="Book Title" />
@@ -184,7 +224,7 @@
                         <Separator layoutX="257.0" layoutY="14.0" orientation="VERTICAL" prefHeight="470.0" prefWidth="2.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="137.0" layoutY="131.0" prefHeight="498.4" prefWidth="779.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="issue_form" layoutX="137.0" layoutY="131.0" prefHeight="498.4" prefWidth="779.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="280.0" layoutY="12.0" prefHeight="474.0" prefWidth="486.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
@@ -282,6 +322,38 @@
                         <Separator layoutX="264.0" layoutY="17.0" orientation="VERTICAL" prefHeight="462.0" prefWidth="0.0" />
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="returnBook_form" prefHeight="498.4" prefWidth="779.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="borrowBook_form" prefHeight="498.4" prefWidth="779.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="221.0" layoutY="13.0" prefHeight="472.0" prefWidth="536.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                           <children>
+                              <TableView fx:id="borrow_tableView" layoutX="7.0" layoutY="7.0" onMouseClicked="#selectBorrowBooks" prefHeight="458.0" prefWidth="522.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
+                                <columns>
+                                  <TableColumn fx:id="col_borrowId" prefWidth="72.00003051757812" style="-fx-background-color: #CC9600;" text="Borrow Id" />
+                                    <TableColumn fx:id="col_borrowBookId" prefWidth="71.20001220703125" style="-fx-background-color: #CC9600;" text="Book Id" />
+                                  <TableColumn fx:id="col_borrowTitle" prefWidth="155.19998168945312" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_borrowBorrowedDate" prefWidth="110.4000244140625" style="-fx-background-color: #CC9600;" text="Borrowed Date" />
+                                    <TableColumn fx:id="col_borrowReturnDate" prefWidth="114.4000244140625" style="-fx-background-color: #CC9600;" text="Return Date" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="472.0" prefWidth="181.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                           <children>
+                              <AnchorPane layoutX="22.0" layoutY="28.0" prefHeight="170.0" prefWidth="134.0" styleClass="image-card" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <ImageView fx:id="borrow_imageView" fitHeight="170.0" fitWidth="134.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="return_btn" layoutX="55.0" layoutY="245.0" mnemonicParsing="false" onAction="#returnBooks" prefHeight="42.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@dashboardDesign.css" text="Return">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <Separator layoutX="206.0" layoutY="13.0" orientation="VERTICAL" prefHeight="474.0" prefWidth="0.0" />
+                     </children></AnchorPane>
                </children>
             </AnchorPane>
          </center>

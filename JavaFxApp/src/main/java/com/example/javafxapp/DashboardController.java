@@ -1,5 +1,7 @@
 package com.example.javafxapp;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +33,9 @@ import javafx.util.Duration;
 
 public class DashboardController implements Initializable {
     @FXML
+    private Label currentForm_label;
+
+    @FXML
     private AnchorPane halfNav_form;
 
     @FXML
@@ -45,7 +51,7 @@ public class DashboardController implements Initializable {
     private Button halfNav_returnBtn;
 
     @FXML
-    private Button halfNav_saveBtn;
+    private Button halfNav_borrowBtn;
 
     @FXML
     private AnchorPane mainCenter_form;
@@ -70,6 +76,15 @@ public class DashboardController implements Initializable {
 
     @FXML
     private AnchorPane availableBooks_form;
+
+    @FXML
+    private AnchorPane returnBook_form;
+
+    @FXML
+    private AnchorPane issue_form;
+
+    @FXML
+    private AnchorPane borrowBook_form;
 
     @FXML
     private ImageView availableBooks_imageView;
@@ -99,6 +114,15 @@ public class DashboardController implements Initializable {
     private Label availableBooks_title;
 
     @FXML
+    private Label availableBooks_author;
+
+    @FXML
+    private Label availableBooks_category;
+
+    @FXML
+    private Label availableBooks_pubDate;
+
+    @FXML
     private Circle circle_image;
 
     @FXML
@@ -111,26 +135,39 @@ public class DashboardController implements Initializable {
     private Button returnBooks_btn;
 
     @FXML
-    private Button save_btn;
+    private Button borrowBooks_btn;
 
     @FXML
-    private Button savedBooks_btn;
+    private TableView<BorrowBooks> borrow_tableView;
+
+    @FXML
+    private TableColumn<BorrowBooks, String> col_borrowBorrowedDate;
+
+    @FXML
+    private TableColumn<BorrowBooks, Integer> col_borrowId;
+
+    @FXML
+    private TableColumn<BorrowBooks, Integer> col_borrowBookId;
+
+    @FXML
+    private TableColumn<BorrowBooks, String> col_borrowReturnDate;
+
+    @FXML
+    private TableColumn<BorrowBooks, String> col_borrowTitle;
+
+    @FXML
+    private ImageView borrow_imageView;
 
     @FXML
     private Button logout_btn;
 
     @FXML
-    private Button take_btn;
+    private Button borrow_btn;
 
     @FXML
     private Label userName_label;
 
     private Image image;
-
-    /*private Connection connect;
-    private PreparedStatement prepare;
-    private Statement statement;
-    private ResultSet result;*/
 
     private String comboBox[] = {"Male", "Female", "Others"};
 
@@ -204,8 +241,370 @@ public class DashboardController implements Initializable {
         }
     }
 
-    public void sliderArrow() {
+    public void selectAvailableBooks() {
 
+        AvailableBooks bookData = availableBooks_tableView.getSelectionModel().getSelectedItem();
+
+        int num = availableBooks_tableView.getSelectionModel().getFocusedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
+        availableBooks_title.setText(bookData.getTitle());
+        availableBooks_author.setText(bookData.getAuthor());
+        availableBooks_category.setText(bookData.getGenre());
+        availableBooks_pubDate.setText(bookData.getDate().toString());
+
+        String uri = "file:" + bookData.getImage();
+
+        image = new Image(uri, 134, 170, false, true);
+
+        availableBooks_imageView.setImage(image);
+
+        GetData.bookId = bookData.getBookId();
+        GetData.borrowDate = bookData.getDate();
+    }
+
+    public void sideNavButtonDesign(ActionEvent event) {
+
+        if (event.getSource() == halfNav_availableBtn) {
+
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(true);
+            borrowBook_form.setVisible(false);
+            returnBook_form.setVisible(false);
+
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            borrowBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_borrowBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Available Books");
+
+            GetData.borrowId= 0;
+
+        } else if (event.getSource() == halfNav_takeBtn) {
+
+            issue_form.setVisible(true);
+            availableBooks_form.setVisible(false);
+            borrowBook_form.setVisible(false);
+            returnBook_form.setVisible(false);
+
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            borrowBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_borrowBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Issue Books");
+
+        } else if (event.getSource() == halfNav_returnBtn) {
+
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            borrowBook_form.setVisible(false);
+            returnBook_form.setVisible(true);
+
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            borrowBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_borrowBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Return Books");
+
+        } else if (event.getSource() == halfNav_borrowBtn) {
+
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            borrowBook_form.setVisible(true);
+            returnBook_form.setVisible(false);
+
+            borrowBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_borrowBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Borrowed Books");
+            //showBorrowBooks();
+        }
+
+    }
+
+    public void navButtonDesign(ActionEvent event) {
+
+        if (event.getSource() == availableBooks_btn) {
+
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(true);
+            borrowBook_form.setVisible(false);
+            returnBook_form.setVisible(false);
+
+            availableBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            issueBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            returnBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            borrowBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_availableBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_takeBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_returnBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_borrowBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Available Books");
+
+            GetData.borrowId = 0;
+
+        } else if (event.getSource() == issueBooks_btn) {
+
+            issue_form.setVisible(true);
+            availableBooks_form.setVisible(false);
+            borrowBook_form.setVisible(false);
+            returnBook_form.setVisible(false);
+
+            issueBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            availableBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            returnBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            borrowBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_takeBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_availableBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_returnBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_borrowBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Issue Books");
+
+        } else if (event.getSource() == returnBooks_btn) {
+
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            borrowBook_form.setVisible(false);
+            returnBook_form.setVisible(true);
+
+            returnBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            availableBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            issueBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            borrowBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_returnBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_takeBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_availableBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_borrowBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Return Books");
+
+        } else if (event.getSource() == borrowBooks_btn) {
+
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            borrowBook_form.setVisible(true);
+            returnBook_form.setVisible(false);
+
+            borrowBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            availableBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            issueBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            returnBooks_btn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            halfNav_borrowBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);");
+            halfNav_takeBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_returnBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+            halfNav_availableBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);");
+
+            currentForm_label.setText("Borrowed Books");
+
+            //showBorrowBooks();
+
+        }
+    }
+
+    public void userName() {
+        userName_label.setText(GetData.username);
+    }
+
+    /*public void displayDate() {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String date = format.format(new java.util.Date());
+
+        take_IssuedDate.setText(date);
+    }*/
+
+    ObservableList<BorrowBooks> borrowBookObservableList = FXCollections.observableArrayList();
+
+    public void showBorrowBooks() {
+        borrowBookObservableList.clear();
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getDBConnection();
+
+        String bookViewQuery = "SELECT b.borrow_id, b.book_id, lb.title, b.borrow_date, b.return_date, lb.image " +
+                "FROM borrow_books b " +
+                "JOIN library_books lb on b.book_id = lb.book_id " +
+                "WHERE b.username = '"+ GetData.username + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(bookViewQuery);
+
+            while (queryOutput.next()) {
+                int borrowId = queryOutput.getInt("borrow_id");
+                int bookId = queryOutput.getInt("book_id");
+                String title = queryOutput.getString("title");
+                String image = queryOutput.getString("image");
+                Date returnDate = queryOutput.getDate("return_date");
+                Date borrowDate = queryOutput.getDate("borrow_date");
+
+                borrowBookObservableList.add(new BorrowBooks(borrowId, bookId, title, image, borrowDate, returnDate));
+            }
+
+            col_borrowId.setCellValueFactory(new PropertyValueFactory<>("borrowId"));
+            col_borrowBookId.setCellValueFactory(new PropertyValueFactory<>("bookId"));
+            col_borrowTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+            col_borrowReturnDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+            col_borrowBorrowedDate.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
+
+            borrow_tableView.setItems(borrowBookObservableList);
+        } catch (SQLException e) {
+            Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+    }
+
+    public void selectBorrowBooks() {
+
+        BorrowBooks sBook = borrow_tableView.getSelectionModel().getSelectedItem();
+        int num = borrow_tableView.getSelectionModel().getFocusedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
+        String uri = "file:" + sBook.getImage();
+
+        image = new Image(uri, 134, 170, false, true);
+        borrow_imageView.setImage(image);
+
+        GetData.bookId = sBook.getBookId();
+        GetData.borrowDate = sBook.getBorrowDate();
+        GetData.returnDate = sBook.getReturnDate();
+        GetData.borrowId = sBook.getBorrowId();
+    }
+
+    public void borrowBooks() {
+        String checkSql = "SELECT * FROM borrow_books WHERE username = '" + GetData.username + "' "
+                + "AND book_id = " + GetData.bookId;
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connect = connectNow.getDBConnection();
+
+
+
+        try {
+            PreparedStatement preparedStatement = connect.prepareStatement(checkSql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Alert alert;
+
+            if (availableBooks_title.getText().isEmpty()) {
+
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select the book");
+                alert.showAndWait();
+
+            } else if (resultSet.next()) {
+
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("You borrowed this book!");
+                alert.showAndWait();
+
+            } else {
+
+                String sql = "INSERT INTO borrow_books VALUES (?,?,?,?,?)";
+                PreparedStatement prepare = connect.prepareStatement(sql);
+                prepare.setInt(1, GetData.borrowId);
+                prepare.setString(2, GetData.username);
+                prepare.setInt(3, GetData.bookId);
+                prepare.setDate(4, GetData.borrowDate);
+                prepare.setDate(5, GetData.returnDate);
+                prepare.executeUpdate();
+
+                alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Borrowed.");
+                alert.showAndWait();
+
+                showBorrowBooks();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void returnBooks() {
+
+        String sql = "DELETE FROM borrow_books WHERE borrow_id = '" + GetData.borrowId + "'";
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connect = connectNow.getDBConnection();
+
+        try {
+
+            Alert alert;
+
+            if (borrow_imageView.getImage() == null) {
+
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Select the book you want to Return");
+                alert.showAndWait();
+
+            } else {
+
+                Statement statement = connect.createStatement();
+                statement.executeUpdate(sql);
+
+                alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Return.");
+                alert.showAndWait();
+
+                showBorrowBooks();
+
+                borrow_imageView.setImage(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void sliderArrow() {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(.5));
         slide.setNode(nav_form);
@@ -310,5 +709,8 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showAvailableBooks();
+        userName();
+        showBorrowBooks();
+        //displayDate();
     }
 }
