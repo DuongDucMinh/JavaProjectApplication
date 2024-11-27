@@ -1,6 +1,6 @@
 package com.example.javafxapp;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class AvailableBooks {
     private final int bookId;
