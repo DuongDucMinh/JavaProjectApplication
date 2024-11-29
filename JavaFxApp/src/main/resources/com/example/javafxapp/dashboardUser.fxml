@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -45,7 +43,7 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="2em" />
                      </graphic>
                   </Button>
-                  <Label layoutX="85.0" layoutY="52.0" prefHeight="30.0" prefWidth="218.0" style="-fx-text-fill: white;" text="Library Managerment" textFill="WHITE">
+                  <Label layoutX="85.0" layoutY="52.0" prefHeight="30.0" prefWidth="218.0" style="-fx-text-fill: white;" text="Library " textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="20.0" />
                      </font>
@@ -98,14 +96,15 @@
                         <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
                            <font>
                               <Font name="AvenirLTStd-Roman" size="12.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                         <Line endX="100.0" layoutX="103.0" layoutY="225.0" startX="-87.60003662109375" stroke="WHITE" />
                         <Button fx:id="logout_btn" layoutX="21.0" layoutY="559.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
                            </graphic>
                         </Button>
-                        <Label layoutX="85.0" layoutY="563.0" style="-fx-text-fill: white;" text="Sign out" textFill="#fafafa">
+                        <Label layoutX="68.0" layoutY="563.0" style="-fx-text-fill: white;" text="Sign out" textFill="#fafafa">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="14.0" />
                            </font>
@@ -113,7 +112,8 @@
                         <Button fx:id="borrowBooks_btn" layoutX="27.0" layoutY="302.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Borrow Books">
                            <font>
                               <Font name="AvenirLTStd-Roman" size="12.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
@@ -122,111 +122,24 @@
          <center>
             <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="availableBooks_form" layoutX="63.0" layoutY="29.0" prefHeight="497.6" prefWidth="764.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane layoutX="5.0" layoutY="13.0" prefHeight="577.0" prefWidth="315.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
-                           <children>
-                              <AnchorPane layoutX="84.0" layoutY="14.0" prefHeight="170.0" prefWidth="134.0" styleClass="image-card" stylesheets="@dashboardDesign.css">
-                                 <children>
-                                    <ImageView fx:id="availableBooks_imageView" fitHeight="170.0" fitWidth="134.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="14.0" layoutY="196.0" prefHeight="371.0" prefWidth="286.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="14.0" style="-fx-text-fill: white;" text="Title:" textFill="WHITE" AnchorPane.leftAnchor="14.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="20.0" layoutY="42.0" style="-fx-text-fill: white;" text="Author:" AnchorPane.leftAnchor="13.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="15.0" layoutY="68.0" style="-fx-text-fill: white;" text="Category:" AnchorPane.leftAnchor="13.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="11.0" layoutY="96.0" style="-fx-text-fill: white;" text="Published date:" AnchorPane.leftAnchor="13.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="availableBooks_author" layoutX="75.0" layoutY="43.0" prefHeight="18.0" prefWidth="179.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="25.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Roman" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="availableBooks_category" layoutX="85.0" layoutY="68.0" prefHeight="18.0" prefWidth="163.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="23.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Roman" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="availableBooks_pubDate" layoutX="119.0" layoutY="96.0" prefHeight="18.0" prefWidth="130.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="23.0">
-                                       <font>
-                                          <Font name="AvenirLTStd-Roman" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="availableBooks_title" layoutX="69.0" layoutY="13.0" prefHeight="20.0" prefWidth="194.0" style="-fx-text-fill: #cc9600;" textFill="#cc9600">
-                                       <font>
-                                          <Font name="AvenirLTStd-Roman" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Button fx:id="borrow_btn" layoutX="108.0" layoutY="314.0" mnemonicParsing="false" onAction="#borrowBooks" prefHeight="42.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@dashboardDesign.css" text="Borrow">
-                                       <font>
-                                          <Font name="AvenirLTStd-Roman" size="13.0" />
-                                       </font>
-                                    </Button>
-                                    <Label layoutX="13.0" layoutY="126.0" prefWidth="98.0" style="-fx-text-fill: white;" text="Description:">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextArea layoutX="18.0" layoutY="144.0" prefHeight="151.0" prefWidth="250.0" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="339.0" layoutY="13.0" prefHeight="579.0" prefWidth="658.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
-                           <children>
-                              <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="57.0" onMouseClicked="#selectAvailableBooks" prefHeight="510.0" prefWidth="632.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
-                                 <columns>
-                                    <TableColumn fx:id="col_ab_bookID" prefWidth="31.200042724609375" style="-fx-background-color: #CC9600;" text="Id" />
-                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="125.5999755859375" style="-fx-background-color: #CC9600;" text="Book Title" />
-                                    <TableColumn fx:id="col_ab_Author" prefWidth="93.60000610351562" style="-fx-background-color: #CC9600;" text="Author" />
-                                    <TableColumn fx:id="col_ab_category" prefWidth="107.20001220703125" style="-fx-background-color: #CC9600;" text="Category" />
-                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="95.199951171875" style="-fx-background-color: #CC9600;" text="Published Date" />
-                                 </columns>
-                              </TableView>
-                              <TextField fx:id="keywordTextField" layoutX="103.0" layoutY="14.0" prefHeight="30.0" prefWidth="538.0" promptText="Keywords..." styleClass="textField_take" stylesheets="@dashboardDesign.css" />
-                              <Label layoutX="14.0" layoutY="18.0" style="-fx-text-fill: white;" text="Find books">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children></AnchorPane>
-                        <Separator layoutX="328.0" layoutY="14.0" orientation="VERTICAL" prefHeight="578.0" prefWidth="0.0" />
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane fx:id="availableBooks_form" prefHeight="601.6" prefWidth="1011.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <AnchorPane fx:id="borrowBook_form" prefHeight="498.4" prefWidth="779.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="221.0" layoutY="13.0" prefHeight="472.0" prefWidth="536.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <TableView fx:id="borrow_tableView" layoutX="7.0" layoutY="7.0" onMouseClicked="#selectBorrowBooks" prefHeight="563.0" prefWidth="763.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
-                                <columns>
-                                  <TableColumn fx:id="col_borrowId" prefWidth="68.79998779296875" style="-fx-background-color: #CC9600;" text="Borrow Id" />
-                                    <TableColumn prefWidth="114.39996337890625" style="-fx-background-color: #CC9600;" text="User Name" />
-                                    <TableColumn fx:id="col_borrowBookId" prefWidth="75.99993896484375" style="-fx-background-color: #CC9600;" text="Book Id" />
-                                  <TableColumn fx:id="col_borrowTitle" prefWidth="250.39999389648438" style="-fx-background-color: #CC9600;" text="Book Title" />
-                                    <TableColumn fx:id="col_borrowBorrowedDate" prefWidth="100.79998779296875" style="-fx-background-color: #CC9600;" text="Borrowed Date" />
-                                    <TableColumn fx:id="col_borrowReturnDate" prefWidth="79.199951171875" style="-fx-background-color: #CC9600;" text="Return Date" />
-                                    <TableColumn prefWidth="79.9998779296875" style="-fx-background-color: #CC9600;" text="Status" />
-                                </columns>
+                              <TableView fx:id="borrow_tableView" layoutX="7.0" layoutY="7.0" onMouseClicked="#selectBorrowBooks" prefHeight="563.0" prefWidth="764.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
+                                 <columns>
+                                    <TableColumn fx:id="col_borrowId" prefWidth="72.00003051757812" style="-fx-background-color: #CC9600;" text="Borrow Id" />
+                                    <TableColumn fx:id="col_borrowBookId" prefWidth="85.5999755859375" style="-fx-background-color: #CC9600;" text="Book Id" />
+                                    <TableColumn fx:id="col_borrowTitle" prefWidth="290.3999938964844" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_borrowBorrowedDate" prefWidth="106.4000244140625" style="-fx-background-color: #CC9600;" text="Borrowed Date" />
+                                    <TableColumn fx:id="col_borrowReturnDate" prefWidth="107.99993896484375" style="-fx-background-color: #CC9600;" text="Return Date" />
+                                    <TableColumn prefWidth="100.800048828125" style="-fx-background-color: #CC9600;" text="Status" />
+                                 </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="572.0" prefWidth="182.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                        <AnchorPane layoutX="14.0" layoutY="12.0" prefHeight="574.0" prefWidth="182.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="28.0" prefHeight="170.0" prefWidth="134.0" styleClass="image-card" stylesheets="@dashboardDesign.css">
                                  <children>
@@ -240,8 +153,9 @@
                               </Button>
                            </children>
                         </AnchorPane>
-                        <Separator layoutX="207.0" layoutY="15.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="0.0" />
-                     </children></AnchorPane>
+                        <Separator layoutX="206.0" layoutY="13.0" orientation="VERTICAL" prefHeight="573.0" prefWidth="0.0" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
