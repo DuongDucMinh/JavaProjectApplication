@@ -122,7 +122,7 @@
          <center>
             <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="availableBooks_form" layoutX="63.0" layoutY="29.0" prefHeight="497.6" prefWidth="764.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="availableBooks_form" layoutX="63.0" layoutY="29.0" prefHeight="497.6" prefWidth="764.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="5.0" layoutY="13.0" prefHeight="577.0" prefWidth="315.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
@@ -192,11 +192,11 @@
                            <children>
                               <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="57.0" onMouseClicked="#selectAvailableBooks" prefHeight="510.0" prefWidth="632.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
                                  <columns>
-                                    <TableColumn fx:id="col_ab_bookID" prefWidth="31.200042724609375" style="-fx-background-color: #CC9600;" text="Id" />
-                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="125.5999755859375" style="-fx-background-color: #CC9600;" text="Book Title" />
-                                    <TableColumn fx:id="col_ab_Author" prefWidth="93.60000610351562" style="-fx-background-color: #CC9600;" text="Author" />
-                                    <TableColumn fx:id="col_ab_category" prefWidth="107.20001220703125" style="-fx-background-color: #CC9600;" text="Category" />
-                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="95.199951171875" style="-fx-background-color: #CC9600;" text="Published Date" />
+                                    <TableColumn fx:id="col_ab_bookID" prefWidth="40.79998779296875" style="-fx-background-color: #CC9600;" text="Id" />
+                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="277.6000061035156" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_ab_Author" prefWidth="97.5999755859375" style="-fx-background-color: #CC9600;" text="Author" />
+                                    <TableColumn fx:id="col_ab_category" prefWidth="108.79986572265625" style="-fx-background-color: #CC9600;" text="Category" />
+                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="108.79998779296875" style="-fx-background-color: #CC9600;" text="Published Date" />
                                  </columns>
                               </TableView>
                               <TextField fx:id="keywordTextField" layoutX="103.0" layoutY="14.0" prefHeight="30.0" prefWidth="538.0" promptText="Keywords..." styleClass="textField_take" stylesheets="@dashboardDesign.css" />
@@ -209,7 +209,7 @@
                         <Separator layoutX="328.0" layoutY="14.0" orientation="VERTICAL" prefHeight="578.0" prefWidth="0.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="borrowBook_form" prefHeight="498.4" prefWidth="779.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="borrowBook_form" prefHeight="498.4" prefWidth="779.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="221.0" layoutY="13.0" prefHeight="472.0" prefWidth="536.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
