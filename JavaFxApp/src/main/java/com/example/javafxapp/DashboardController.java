@@ -295,7 +295,6 @@ public class DashboardController implements Initializable {
 
             currentForm_label.setText("Borrowed Books");
         }
-
     }
 
     public void navButtonDesign(ActionEvent event) {
