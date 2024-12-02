@@ -101,6 +101,12 @@ public class DashboardController implements Initializable {
     private TableColumn<AvailableBooks, String> col_ab_publishedDate;
 
     @FXML
+    private TableColumn<AvailableBooks, Integer> col_ab_price;
+
+    @FXML
+    private TableColumn<AvailableBooks, Integer> col_ab_quantity;
+
+    @FXML
     private Label availableBooks_title;
 
     @FXML
@@ -110,7 +116,13 @@ public class DashboardController implements Initializable {
     private Label availableBooks_category;
 
     @FXML
-    private Label availableBooks_pubDate;
+    private Label availableBooks_price;
+
+    @FXML
+    private Label availableBooks_quantity;
+
+    @FXML
+    private Label availableBooks_description;
 
     @FXML
     private Circle circle_image;
@@ -170,10 +182,13 @@ public class DashboardController implements Initializable {
                 String title = queryOutput.getString("title");
                 String genre = queryOutput.getString("category");
                 String author = queryOutput.getString("author");
+                int price = queryOutput.getInt("price");
+                int quantity = queryOutput.getInt("quantity");
                 String image = queryOutput.getString("image");
                 Date date = queryOutput.getDate("date");
+                String description = queryOutput.getString("description");
 
-                bookSearchObservableList.add(new AvailableBooks(bookId, title, author, genre, image, date));
+                bookSearchObservableList.add(new AvailableBooks(bookId, title, author, genre, price, quantity, image, date, description));
             }
 
             col_ab_bookID.setCellValueFactory(new PropertyValueFactory<>("bookId"));
@@ -181,6 +196,8 @@ public class DashboardController implements Initializable {
             col_ab_category.setCellValueFactory(new PropertyValueFactory<>("genre"));
             col_ab_Author.setCellValueFactory(new PropertyValueFactory<>("author"));
             col_ab_publishedDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            col_ab_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+            col_ab_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             availableBooks_tableView.setItems(bookSearchObservableList);
 
@@ -202,7 +219,9 @@ public class DashboardController implements Initializable {
                             || AvailableBooks.getAuthor().toLowerCase().contains(searchKeywords)
                             || AvailableBooks.getGenre().toLowerCase().contains(searchKeywords)
                             || AvailableBooks.getDate().toString().contains(searchKeywords)
-                            || (AvailableBooks.getBookId() + "").contains(searchKeywords);
+                            || (AvailableBooks.getBookId() + "").contains(searchKeywords)
+                            || (AvailableBooks.getQuantity() + "").contains(searchKeywords)
+                            || (AvailableBooks.getPrice() + "").contains(searchKeywords);
                 });
             });
 
@@ -233,7 +252,9 @@ public class DashboardController implements Initializable {
         availableBooks_title.setText(bookData.getTitle());
         availableBooks_author.setText(bookData.getAuthor());
         availableBooks_category.setText(bookData.getGenre());
-        availableBooks_pubDate.setText(bookData.getDate().toString());
+        availableBooks_quantity.setText(bookData.getQuantity() + "");
+        availableBooks_price.setText(bookData.getPrice() + "");
+        availableBooks_description.setText(bookData.getDescription());
 
         String uri = "file:" + bookData.getImage();
 

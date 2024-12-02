@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -148,12 +147,12 @@
                                           <Font name="AvenirLTStd-Medium" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="11.0" layoutY="96.0" style="-fx-text-fill: white;" text="Published date:" AnchorPane.leftAnchor="13.0">
+                                    <Label layoutX="11.0" layoutY="96.0" style="-fx-text-fill: white;" text="Quantity:" AnchorPane.leftAnchor="13.0">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="availableBooks_author" layoutX="75.0" layoutY="43.0" prefHeight="18.0" prefWidth="179.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="25.0">
+                                    <Label fx:id="availableBooks_author" layoutX="75.0" layoutY="43.0" prefHeight="18.0" prefWidth="161.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="28.0">
                                        <font>
                                           <Font name="AvenirLTStd-Roman" size="14.0" />
                                        </font>
@@ -163,12 +162,12 @@
                                           <Font name="AvenirLTStd-Roman" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="availableBooks_pubDate" layoutX="119.0" layoutY="96.0" prefHeight="18.0" prefWidth="130.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="23.0">
+                                    <Label fx:id="availableBooks_quantity" layoutX="119.0" layoutY="96.0" prefHeight="18.0" prefWidth="161.0" style="-fx-text-fill: #cc9600;" AnchorPane.rightAnchor="24.0">
                                        <font>
                                           <Font name="AvenirLTStd-Roman" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="availableBooks_title" layoutX="69.0" layoutY="13.0" prefHeight="20.0" prefWidth="194.0" style="-fx-text-fill: #cc9600;" textFill="#cc9600">
+                                    <Label fx:id="availableBooks_title" layoutX="93.0" layoutY="13.0" prefHeight="20.0" prefWidth="170.0" style="-fx-text-fill: #cc9600;" textFill="#cc9600">
                                        <font>
                                           <Font name="AvenirLTStd-Roman" size="14.0" />
                                        </font>
@@ -178,12 +177,25 @@
                                           <Font name="AvenirLTStd-Roman" size="13.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="13.0" layoutY="126.0" prefWidth="98.0" style="-fx-text-fill: white;" text="Description:">
+                                    <Label layoutX="13.0" layoutY="152.0" prefWidth="98.0" style="-fx-text-fill: white;" text="Description:">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextArea layoutX="18.0" layoutY="144.0" prefHeight="151.0" prefWidth="250.0" />
+                                    <Label fx:id="availableBooks_description" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="32.0" layoutY="176.0" prefHeight="130.0" prefWidth="222.0" style="-fx-text-fill: #cc9600;">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="14.0" />
+                                       </font></Label>
+                                    <Label layoutX="14.0" layoutY="124.0" style="-fx-text-fill: white;" text="Price:">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="availableBooks_price" layoutX="99.0" layoutY="124.0" prefHeight="18.0" prefWidth="137.0" style="-fx-text-fill: #cc9600;">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="14.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>
@@ -192,11 +204,13 @@
                            <children>
                               <TableView fx:id="availableBooks_tableView" layoutX="12.0" layoutY="57.0" onMouseClicked="#selectAvailableBooks" prefHeight="510.0" prefWidth="632.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
                                  <columns>
-                                    <TableColumn fx:id="col_ab_bookID" prefWidth="40.79998779296875" style="-fx-background-color: #CC9600;" text="Id" />
-                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="277.6000061035156" style="-fx-background-color: #CC9600;" text="Book Title" />
-                                    <TableColumn fx:id="col_ab_Author" prefWidth="97.5999755859375" style="-fx-background-color: #CC9600;" text="Author" />
-                                    <TableColumn fx:id="col_ab_category" prefWidth="108.79986572265625" style="-fx-background-color: #CC9600;" text="Category" />
-                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="108.79998779296875" style="-fx-background-color: #CC9600;" text="Published Date" />
+                                    <TableColumn fx:id="col_ab_bookID" prefWidth="31.199951171875" style="-fx-background-color: #CC9600;" text="Id" />
+                                    <TableColumn fx:id="col_ab_bookTitle" prefWidth="180.80001831054688" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_ab_Author" prefWidth="104.0" style="-fx-background-color: #CC9600;" text="Author" />
+                                    <TableColumn fx:id="col_ab_category" prefWidth="87.20001220703125" style="-fx-background-color: #CC9600;" text="Category" />
+                                    <TableColumn fx:id="col_ab_price" minWidth="0.0" prefWidth="71.199951171875" style="-fx-background-color: #CC9600;" text="Price" />
+                                    <TableColumn fx:id="col_ab_quantity" prefWidth="60.7999267578125" style="-fx-background-color: #CC9600;" text="Quantity" />
+                                    <TableColumn fx:id="col_ab_publishedDate" prefWidth="96.800048828125" style="-fx-background-color: #CC9600;" text="Published Date" />
                                  </columns>
                               </TableView>
                               <TextField fx:id="keywordTextField" layoutX="103.0" layoutY="14.0" prefHeight="30.0" prefWidth="538.0" promptText="Keywords..." styleClass="textField_take" stylesheets="@dashboardDesign.css" />

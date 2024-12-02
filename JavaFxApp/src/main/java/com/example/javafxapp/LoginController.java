@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
                 GetData.username = usernameField.getText();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
                 Stage dashboardStage = (Stage) loginButton.getScene().getWindow();
-                dashboardStage.setScene(new Scene(fxmlLoader.load(), 994, 600));
+                dashboardStage.setScene(new Scene(fxmlLoader.load(), 1233, 704));
                 dashboardStage.show();
             }
         }
