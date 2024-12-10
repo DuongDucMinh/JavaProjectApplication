@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
+
+<AnchorPane prefHeight="756.0" prefWidth="1138.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.ManagerBookController">
+    <children>
+      <BorderPane layoutX="111.0" layoutY="58.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1026.0">
+         <top>
+            <AnchorPane prefHeight="400.0" prefWidth="756.0" BorderPane.alignment="CENTER">
+               <children>
+                    <!-- Tìm kiếm -->
+                    <TextField fx:id="searchTextField" layoutX="125.0" layoutY="25.0" prefHeight="25.0" prefWidth="441.0" promptText="Enter book name or author" />
+                    <Button fx:id="searchButton" layoutX="617.0" layoutY="25.0" onAction="#handleSearch" text="Search" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="400.0" prefWidth="891.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane fitToWidth="true" layoutY="-300.0" prefHeight="576.0" prefWidth="891.0">
+                     <content>
+                        <TilePane fx:id="bookContainer" hgap="10" prefColumns="4" style="-fx-padding: 10;" vgap="10" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+    </children>
+</AnchorPane>

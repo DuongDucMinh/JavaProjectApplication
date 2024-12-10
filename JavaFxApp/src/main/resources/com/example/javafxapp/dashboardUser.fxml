@@ -3,162 +3,201 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="704.0" prefWidth="1233.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.DashboardController">
-   <children>
-      <BorderPane prefHeight="704.0" prefWidth="1233.6" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane layoutY="-14.0" prefHeight="42.0" prefWidth="995.0" styleClass="top-from" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Button fx:id="close" alignment="CENTER" layoutX="1167.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" prefHeight="38.0" prefWidth="66.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
-                           </graphic>
+<AnchorPane prefHeight="704.0" prefWidth="1233.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.UserDashboardController">
+    <children>
+        <BorderPane prefHeight="704.0" prefWidth="1233.6" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane layoutY="-14.0" prefHeight="42.0" prefWidth="995.0" styleClass="top-from" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Button fx:id="close" alignment="CENTER" layoutX="1167.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" prefHeight="38.0" prefWidth="66.0" styleClass="close-btn" stylesheets="@dashboardDesign.css">
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="minimize" layoutX="1103.0" layoutY="1.0" mnemonicParsing="false" onAction="#minimize" prefHeight="38.0" prefWidth="64.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="MINUS" selectionStart="0" size="1.2em" />
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                        <Button fx:id="bars_btn" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css">
+                            <graphic>
+                                <FontAwesomeIconView fill="WHITE" glyphName="BARS" size="2em" tabSize="0" />
+                            </graphic>
                         </Button>
-                        <Button fx:id="minimize" layoutX="1103.0" layoutY="1.0" mnemonicParsing="false" onAction="#minimize" prefHeight="38.0" prefWidth="64.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="MINUS" selectionStart="0" size="1.2em" />
-                           </graphic>
+                        <Button fx:id="arrow_btn" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css" textFill="WHITE">
+                            <graphic>
+                                <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="2em" />
+                            </graphic>
                         </Button>
-                     </children>
-                  </AnchorPane>
-                  <Button fx:id="bars_btn" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="BARS" size="2em" tabSize="0" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="arrow_btn" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="32.0" prefWidth="38.0" styleClass="bars" stylesheets="@dashboardDesign.css" textFill="WHITE">
-                     <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="2em" />
-                     </graphic>
-                  </Button>
-                  <Label layoutX="85.0" layoutY="52.0" prefHeight="30.0" prefWidth="218.0" style="-fx-text-fill: white;" text="Library " textFill="WHITE">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="currentForm_label" layoutX="1022.0" layoutY="55.0" prefHeight="18.0" prefWidth="177.0" style="-fx-text-fill: #CC9600;" text="Available Books" textFill="#cc9600">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane prefHeight="498.0" prefWidth="222.0" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane fx:id="halfNav_form" prefHeight="498.0" prefWidth="77.0">
-                     <children>
-                        <Circle fx:id="smallCircle_image" fill="#354a5e" layoutX="39.0" layoutY="42.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Line endX="104.39994812011719" endY="-7.62939453125E-6" layoutX="-36.0" layoutY="82.0" startX="45.992881774902344" startY="-7.62939453125E-6" stroke="WHITE" />
-                        <Button fx:id="halfNav_availableBtn" layoutX="12.0" layoutY="134.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                        <Label layoutX="85.0" layoutY="52.0" prefHeight="30.0" prefWidth="218.0" style="-fx-text-fill: white;" text="Library " textFill="WHITE">
+                            <font>
+                                <Font name="AvenirLTStd-Medium" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="currentForm_label" layoutX="1022.0" layoutY="55.0" prefHeight="18.0" prefWidth="177.0" style="-fx-text-fill: #CC9600;" text="Books API" textFill="#cc9600">
+                            <font>
+                                <Font name="AvenirLTStd-Medium" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </top>
+            <left>
+                <AnchorPane prefHeight="498.0" prefWidth="222.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane fx:id="halfNav_form" prefHeight="498.0" prefWidth="77.0">
+                            <children>
+                                <Circle fx:id="smallCircle_image" fill="#354a5e" layoutX="39.0" layoutY="42.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+                                <Line endX="104.39994812011719" endY="-7.62939453125E-6" layoutX="-36.0" layoutY="82.0" startX="45.992881774902344" startY="-7.62939453125E-6" stroke="WHITE" />
+                                <Button fx:id="halfNav_availableBtn" layoutX="12.0" layoutY="134.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="SEARCH" size="1.5em" />
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="halfNav_availableBtn1" layoutX="12.0" layoutY="202.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="BOOK" size="1.5em" />
+                                    </graphic>
+                                </Button>
+                        <Button fx:id="halfNav_borrowBtn" layoutX="11.0" layoutY="269.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
                            <graphic>
                               <FontAwesomeIconView glyphName="CLIPBOARD" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="halfNav_borrowBtn" layoutX="12.0" layoutY="202.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="46.0" prefWidth="54.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="BOOK" size="1.5em" />
-                           </graphic>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="nav_form" layoutX="11.0" layoutY="34.0" prefHeight="498.0" prefWidth="222.4" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                        <ImageView fx:id="avatarView" fitHeight="150.0" fitWidth="127.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
+                                <Label alignment="TOP_CENTER" layoutX="62.0" layoutY="152.0" prefHeight="18.0" prefWidth="97.0" style="-fx-text-fill: white;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="AvenirLTStd-Medium" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="userName_label" alignment="CENTER" layoutX="10.0" layoutY="180.0" prefHeight="24.0" prefWidth="200.0" style="-fx-text-fill: #cc9600;" text="Dudumi" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="AvenirLTStd-Medium" size="20.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Book API">
+                                    <font>
+                                        <Font name="AvenirLTStd-Roman" size="12.0" />
+                                    </font>
+                                </Button>
+                                <Line endX="100.0" layoutX="103.0" layoutY="225.0" startX="-87.60003662109375" stroke="WHITE" />
+                                <Button fx:id="logout_btn" layoutX="21.0" layoutY="559.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
+                                    <graphic>
+                                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
+                                    </graphic>
+                                </Button>
+                                <Label layoutX="68.0" layoutY="563.0" style="-fx-text-fill: white;" text="Sign out" textFill="#fafafa">
+                                    <font>
+                                        <Font name="AvenirLTStd-Medium" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="borrowBooks_btn" layoutX="25.0" layoutY="358.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Borrow Books">
+                                    <font>
+                                        <Font name="AvenirLTStd-Roman" size="12.0" />
+                                    </font>
+                                </Button>
+                        <Button fx:id="availableBooks_btn1" layoutX="25.0" layoutY="304.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
+                           <font>
+                              <Font name="AvenirLTStd-Roman" size="12.0" />
+                           </font>
                         </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="nav_form" layoutX="11.0" layoutY="34.0" prefHeight="498.0" prefWidth="222.4" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="uploadButton" layoutX="63.0" layoutY="124.0" mnemonicParsing="false" onAction="#uploadButtonOnAction" text="Change Avatar" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+            </left>
+            <center>
+                <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane fx:id="availableBooks_form" prefHeight="601.6" prefWidth="1011.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Circle fx:id="circle_image" fill="#313c46" layoutX="111.0" layoutY="77.0" radius="63.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Button fx:id="edit_btn" layoutX="68.0" layoutY="30.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="86.0" styleClass="edit-btn" stylesheets="@dashboardDesign.css">
-                           <graphic>
-                              <FontAwesomeIconView fx:id="edit_icon" fill="WHITE" glyphName="EDIT" selectionEnd="0" size="2em" />
-                           </graphic>
-                        </Button>
-                        <Label alignment="TOP_CENTER" layoutX="62.0" layoutY="152.0" prefHeight="18.0" prefWidth="97.0" style="-fx-text-fill: white;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="userName_label" alignment="CENTER" layoutX="10.0" layoutY="180.0" prefHeight="24.0" prefWidth="200.0" style="-fx-text-fill: #cc9600;" text="Dudumi" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="availableBooks_btn" layoutX="27.0" layoutY="249.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
-                           <font>
-                              <Font name="AvenirLTStd-Roman" size="12.0" />
-                           </font>
-                        </Button>
-                        <Line endX="100.0" layoutX="103.0" layoutY="225.0" startX="-87.60003662109375" stroke="WHITE" />
-                        <Button fx:id="logout_btn" layoutX="21.0" layoutY="559.0" maxWidth="38.0" minWidth="38.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="38.0" styleClass="logout-btn" stylesheets="@dashboardDesign.css">
-                           <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="1.5em" text="" />
-                           </graphic>
-                        </Button>
-                        <Label layoutX="68.0" layoutY="563.0" style="-fx-text-fill: white;" text="Sign out" textFill="#fafafa">
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="borrowBooks_btn" layoutX="27.0" layoutY="302.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="32.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Borrow Books">
-                           <font>
-                              <Font name="AvenirLTStd-Roman" size="12.0" />
-                           </font>
-                        </Button>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1026.0">
+                           <top>
+                              <AnchorPane prefHeight="400.0" prefWidth="756.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="searchTextField" layoutX="279.0" layoutY="32.0" prefHeight="25.0" prefWidth="441.0" promptText="Enter book name or author" />
+                                    <Button fx:id="searchButton" layoutX="759.0" layoutY="32.0" onAction="#handleSearch" text="Search" />
+                                    <ScrollPane fitToWidth="true" layoutX="81.0" layoutY="77.0" prefHeight="517.0" prefWidth="863.0">
+                                       <content>
+                                          <TilePane fx:id="bookContainer" hgap="10" prefColumns="4" style="-fx-padding: 10;" vgap="10" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </top>
+                           <center>
+                              <AnchorPane prefHeight="400.0" prefWidth="891.0" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </children></AnchorPane>
+                  <AnchorPane fx:id="availableBooks1_form" prefHeight="640.0" prefWidth="1117.0">
+                     <children>
+                        <ScrollPane fitToWidth="true" layoutX="80.0" layoutY="50.0" prefHeight="576.0" prefWidth="891.0">
+                           <content>
+                              <TilePane fx:id="bookContainer1" hgap="10" prefColumns="4" style="-fx-padding: 10;" vgap="10" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
-               </children>
-            </AnchorPane>
-         </left>
-         <center>
-            <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane fx:id="availableBooks_form" prefHeight="601.6" prefWidth="1011.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <AnchorPane fx:id="borrowBook_form" prefHeight="498.4" prefWidth="779.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="borrowBook_form" layoutX="10.0" layoutY="10.0" prefHeight="498.4" prefWidth="779.2" visible="false">
                      <children>
                         <AnchorPane layoutX="221.0" layoutY="13.0" prefHeight="472.0" prefWidth="536.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <TableView fx:id="borrow_tableView" layoutX="7.0" layoutY="7.0" onMouseClicked="#selectBorrowBooks" prefHeight="563.0" prefWidth="764.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
+                              <TableView fx:id="borrow_tableView" layoutX="7.0" layoutY="7.0" onMouseClicked="#selectBorrowBooks" prefHeight="563.0" prefWidth="763.0" style="-fx-text-fill: white; -fx-background-color: #262626;">
                                  <columns>
-                                    <TableColumn fx:id="col_borrowId" prefWidth="72.00003051757812" style="-fx-background-color: #CC9600;" text="Borrow Id" />
-                                    <TableColumn fx:id="col_borrowBookId" prefWidth="85.5999755859375" style="-fx-background-color: #CC9600;" text="Book Id" />
-                                    <TableColumn fx:id="col_borrowTitle" prefWidth="290.3999938964844" style="-fx-background-color: #CC9600;" text="Book Title" />
-                                    <TableColumn fx:id="col_borrowBorrowedDate" prefWidth="106.4000244140625" style="-fx-background-color: #CC9600;" text="Borrowed Date" />
-                                    <TableColumn fx:id="col_borrowReturnDate" prefWidth="107.99993896484375" style="-fx-background-color: #CC9600;" text="Return Date" />
-                                    <TableColumn prefWidth="100.800048828125" style="-fx-background-color: #CC9600;" text="Status" />
+                                    <TableColumn fx:id="col_borrowId" prefWidth="68.79998779296875" style="-fx-background-color: #CC9600;" text="Borrow Id" />
+                                    <TableColumn fx:id="col_borrowBookId" prefWidth="75.99993896484375" style="-fx-background-color: #CC9600;" text="Book Id" />
+                                    <TableColumn fx:id="col_borrowTitle" prefWidth="288.88885498046875" style="-fx-background-color: #CC9600;" text="Book Title" />
+                                    <TableColumn fx:id="col_borrowBorrowedDate" prefWidth="117.77777099609375" style="-fx-background-color: #CC9600;" text="Borrowed Date" />
+                                    <TableColumn fx:id="col_borrowReturnDate" prefWidth="109.33331298828125" style="-fx-background-color: #CC9600;" text="Return Date" />
+                                    <TableColumn fx:id="col_borrowStatus" prefWidth="102.2222900390625" style="-fx-background-color: #CC9600;" text="Status" />
                                  </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="12.0" prefHeight="574.0" prefWidth="182.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                        <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="572.0" prefWidth="182.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <AnchorPane layoutX="22.0" layoutY="28.0" prefHeight="170.0" prefWidth="134.0" styleClass="image-card" stylesheets="@dashboardDesign.css">
-                                 <children>
-                                    <ImageView fx:id="borrow_imageView" fitHeight="170.0" fitWidth="134.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </AnchorPane>
                               <Button fx:id="return_btn" layoutX="55.0" layoutY="245.0" mnemonicParsing="false" onAction="#returnBooks" prefHeight="42.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@dashboardDesign.css" text="Return">
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="12.0" />
                                  </font>
                               </Button>
+                              <Button fx:id="generateQRButton" layoutX="56.0" layoutY="305.0" mnemonicParsing="false" onAction="#generateQRButtonOnAction" prefHeight="42.0" prefWidth="70.0" styleClass="qr-btn" stylesheets="@dashboardDesign.css" text="QR">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="12.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fx:id="borrow_imageView" fitHeight="170.0" fitWidth="146.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
-                        <Separator layoutX="206.0" layoutY="13.0" orientation="VERTICAL" prefHeight="573.0" prefWidth="0.0" />
+                        <Separator layoutX="207.0" layoutY="15.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="0.0" />
                      </children>
                   </AnchorPane>
-               </children>
-            </AnchorPane>
-         </center>
-      </BorderPane>
-   </children>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>

@@ -1,0 +1,18 @@
+/* Center-align the entire tab header area */
+.large-tab-pane .tab-header-area {
+    -fx-hgap: 20px;
+    -fx-alignment: center; /* Align tab buttons (tabs) to the center */
+}
+
+/* Style individual tab buttons */
+.large-tab-pane .tab-header-area .tab {
+    -fx-padding: 10px 20px; /* Adjust padding around each tab button */
+    -fx-font-size: 16px;    /* Increase font size for better visibility */
+    -fx-text-alignment: center; /* Center-align tab button text */
+}
+
+/* Optional: Customize the tab label style */
+.large-tab-pane .tab-header-area .tab-label {
+    -fx-font-weight: bold; /* Make tab text bold */
+    -fx-text-alignment: center;
+}

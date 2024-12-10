@@ -1,55 +1,53 @@
-
-.top-from{
+.top-from {
     -fx-background-color: #000;
     -fx-border-color: #fff;
-    -fx-border-width: .2px .2px .5px .2px;
+    -fx-border-width: 0.2px 0.2px 0.5px 0.2px;
 }
 
-.semiTop-form{
+.semiTop-form {
     -fx-border-color: #fff;
-    -fx-border-width: .0px .0px .5px .0px;
+    -fx-border-width: 0px 0px 0.5px 0px;
 }
 
-.close-btn{
+.close-btn {
     -fx-background-color: #404040;
     -fx-cursor: hand;
 }
 
-.close-btn:hover{
+.close-btn:hover {
     -fx-background-color: #f13f57;
 }
 
-.minimize-btn{
+.minimize-btn {
     -fx-background-color: #404040;
     -fx-cursor: hand;
 }
 
-.minimize-btn:hover{
+.minimize-btn:hover {
     -fx-background-color: #dddddd;
 }
 
-.bars{
+.bars {
     -fx-background-color: #000000;
     -fx-cursor: hand;
 }
 
-.bars:hover{
+.bars:hover {
     -fx-background-color: #404040;
     -fx-background-radius: 5px;
 }
 
-.nav-form{
+.nav-form {
     -fx-background-color: linear-gradient(to bottom right, #000000, #000000);
 }
 
-.edit-btn{
+.edit-btn {
     -fx-background-color: transparent;
     -fx-cursor: hand;
     -fx-padding: 60px 0px 0px 0px;
 }
 
-
-.nav-btn{
+.nav-btn {
     -fx-background-color: linear-gradient(to bottom right, #CC9600, #CC9600);
     -fx-background-radius: 5px;
     -fx-cursor: hand;
@@ -59,35 +57,35 @@
     -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
-.nav-btn:hover{
+.nav-btn:hover {
     -fx-background-color: linear-gradient(to bottom right, #F0B000, #F0B000);
     -fx-background-radius: 5px;
 }
 
-.logout-btn{
+.logout-btn {
     -fx-background-color: #C97C00;
     -fx-background-radius: 10px;
     -fx-cursor: hand;
 }
 
-.logout-btn:hover{
+.logout-btn:hover {
     -fx-background-color: #F0B000;
     -fx-background-radius: 10px;
 }
 
-.card-form{
+.card-form {
     -fx-background-color: #000000;
     -fx-border-color: #ffffff;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
 
-.image-card{
+.image-card {
     -fx-background-color: #404040;
     -fx-border-color: #000;
 }
 
-.save-btn{
+.save-btn {
     -fx-background-color: #558e74;
     -fx-background-radius: 15px;
     -fx-font-size: 15px;
@@ -97,11 +95,29 @@
     -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
-.save-btn:hover{
+.save-btn:hover {
     -fx-background-color: #57b187;
 }
 
-.take-btn{
+.qr-btn {
+    -fx-background-color: #1CEA38;
+    -fx-background-radius: 15px;
+        -fx-font-size: 15px;
+        -fx-cursor: hand;
+        -fx-text-fill: #fff;
+        -fx-font-weight: bold;
+        -fx-font-family: "Avenir LT Std 55 Roman";
+}
+
+.qr-btn:hover {
+    -fx-background-color: #1CFB38;
+}
+
+.take-btn:hover {
+    -fx-background-color: #b356bb;
+}
+
+.take-btn {
     -fx-background-color: #914f96;
     -fx-background-radius: 15px;
     -fx-font-size: 15px;
@@ -111,46 +127,45 @@
     -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
-.take-btn:hover{
+.take-btn:hover {
     -fx-background-color: #b356bb;
 }
 
-.textField_take{
+.textField_take {
     -fx-background-color: #404040;
     -fx-background-radius: 5px;
     -fx-border-color: #fff;
     -fx-border-radius: 5px;
-    -fx-border-width: .4px;
+    -fx-border-width: 0.4px;
     -fx-font-size: 14px;
     -fx-text-fill: #fff;
     -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
-.textField_take:focused{
-    -fx-border-width: .8px;
+.textField_take:focused {
+    -fx-border-width: 0.8px;
 }
 
-.label_take{
+.label_take {
     -fx-background-color: #404040;
     -fx-padding: 0px 0px 0px 8px;
     -fx-font-size: 14px;
     -fx-text-fill: #fff;
     -fx-border-color: #fff;
     -fx-border-radius: 5px;
-    -fx-border-width: .4px;
+    -fx-border-width: 0.4px;
     -fx-background-radius: 5px;
     -fx-font-family: "Avenir LT Std 55 Roman";
 }
 
-
-.unSave-btn{
-    -fx-background-color:#8c2d2d;
-    -fx-background-radius:15px;
-    -fx-text-fill:#fff;
-    -fx-font-size:14px;
-    -fx-cursor:hand;
+.unSave-btn {
+    -fx-background-color: #8c2d2d;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
 }
 
-.unSave-btn:hover{
-    -fx-background-color:#c54d5d;
+.unSave-btn:hover {
+    -fx-background-color: #c54d5d;
 }

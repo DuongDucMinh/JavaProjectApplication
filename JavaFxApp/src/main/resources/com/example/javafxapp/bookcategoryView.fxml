@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane prefHeight="612.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.BookCategoryController">
+    <top>
+        <HBox alignment="CENTER" spacing="10">
+            <Button onAction="#onPreviousClicked" text="Previous" />
+            <Label style="-fx-font-size: 16px;" text="Book Categories" />
+            <Button onAction="#onNextClicked" text="Next" />
+        </HBox>
+    </top>
+   <center>
+      <AnchorPane prefHeight="530.0" prefWidth="956.0" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane fx:id="tabPane" layoutX="186.0" layoutY="37.0" prefHeight="550.0" prefWidth="956.0" styleClass="large-tab-pane" stylesheets="@styleClass.css">
+               <tabs>
+                  <Tab text="Popular">
+                     <content>
+                        <ListView fx:id="popularListView" prefHeight="435.0" prefWidth="912.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="5 Under">
+                     <content>
+                        <ListView fx:id="underFiveListView" />
+                     </content>
+                  </Tab>
+                  <Tab text="Ages 6-8">
+                     <content>
+                        <ListView fx:id="agesSixToEightListView" />
+                     </content>
+                  </Tab>
+                  <Tab text="Ages 9-12">
+                     <content>
+                        <ListView fx:id="agesNineToTwelveListView" />
+                     </content>
+                  </Tab>
+                  <Tab text="Audio">
+                     <content>
+                        <ListView fx:id="audioListView" />
+                     </content>
+                  </Tab>
+               </tabs>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

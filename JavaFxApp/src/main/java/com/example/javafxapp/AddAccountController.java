@@ -1,130 +1,51 @@
 package com.example.javafxapp;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.PriorityQueue;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class RegisterController implements Initializable {
+
+public class AddAccountController implements Initializable {
     @FXML
-    private Button registerButton;
+    private TextField firstnameTextField;
     @FXML
-    private Button backButton;
+    private TextField lastnameTextField;
     @FXML
-    private Label registerMessageLabel;
-    @FXML
-    private TextField usernameField;
+    private TextField usernameTextField;
     @FXML
     private PasswordField enterPasswordField;
     @FXML
-    private PasswordField confirmPasswordField;
+    private Button uploadButton;
+    @FXML
+    private TextField imageTextField;
+    @FXML
+    private Button closeButton;
+    @FXML
+    private Button minimizeButton;
     @FXML
     private Label errorMessageLabel;
+
+    private UserSearchController parentController;
+
     private PriorityQueue<Integer> pq = new PriorityQueue<>();
 
     public String[] errorMessage = new String[3];
     private boolean isValidEmail;
 
-    public void initMessage() {
-        errorMessage[0] = "Invalid Username or Email.";
-        errorMessage[1] = "Password must be at least 8 characters"
-                + "with letter and number, no special or non-ASCII characters.";
-        errorMessage[2] = "The passwords you entered do not match.";
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //File brandingFile = new File("...");
-        //Image brandingImage = new Image(brandingFile.toURL().toString());
-
-//        if (invalidInfoField.getChildren() != null) {
-//            invalidInfoField.getChildren().get(0).setVisible(true);
-//        }
-
-        initMessage();
-        usernameField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {  // If focus is lost
-                if (!isValidUsername(usernameField.getText())) {
-                    if (!pq.contains(0)) {
-                        pq.add(0);
-                        //System.out.print(pq.size());
-                    }
-                }
-                else {
-                    pq.remove(0);
-                }
-
-                if (pq.size() > 0)
-                    errorMessageLabel.setText(errorMessage[pq.peek()]);
-                else
-                    errorMessageLabel.setText("");
-            }
-        });
-
-        enterPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {  // If focus is lost
-                if (!checkPassword() && !confirmPasswordField.getText().equals("")) {
-                    if (!pq.contains(2))
-                        pq.add(2);
-                }
-                else {
-                    pq.remove(2);
-                }
-
-                if (!isValidPassword(enterPasswordField.getText())) {
-                    if (!pq.contains(1))
-                        pq.add(1);
-                }
-                else {
-                    pq.remove(1);
-                }
-
-                if (pq.size() > 0)
-                    errorMessageLabel.setText(errorMessage[pq.peek()]);
-                else
-                    errorMessageLabel.setText("");
-            }
-        });
-
-        confirmPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {  // If focus is lost
-                if (!checkPassword()) {
-                    if (!pq.contains(2))
-                        pq.add(2);
-
-                }
-                else {
-                    pq.remove(2);
-                }
-                if (pq.size() > 0)
-                    errorMessageLabel.setText(errorMessage[pq.peek()]);
-                else
-                    errorMessageLabel.setText("");
-            }
-        });
-
-    }
-
-    public void getBackScene() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-            Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.setScene(new Scene(fxmlLoader.load(), 727, 521));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
+    public void setParentController(UserSearchController parentController) {
+        this.parentController = parentController;
     }
 
     public boolean isValidUsername(String username) {
@@ -146,38 +67,106 @@ public class RegisterController implements Initializable {
         return password.matches(regex);
     }
 
-    public boolean checkPassword() {
-        return (enterPasswordField.getText().equals(confirmPasswordField.getText()));
+    public void initMessage() {
+        errorMessage[0] = "Invalid Username or Email.";
+        errorMessage[1] = "Password must be at least 8 characters"
+                + "with letter and number, no special or non-ASCII characters.";
+        errorMessage[2] = "The passwords you entered do not match.";
     }
 
-    public boolean isValidEmail(String email) {
-        String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-        Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
-        if (email == null) {
-            return false;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //File brandingFile = new File("...");
+        //Image brandingImage = new Image(brandingFile.toURL().toString());
+
+//        if (invalidInfoField.getChildren() != null) {
+//            invalidInfoField.getChildren().get(0).setVisible(true);
+//        }
+
+        initMessage();
+        usernameTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {  // If focus is lost
+                if (!isValidUsername(usernameTextField.getText())) {
+                    if (!pq.contains(0)) {
+                        pq.add(0);
+                        //System.out.print(pq.size());
+                    }
+                }
+                else {
+                    pq.remove(0);
+                }
+
+                if (pq.size() > 0)
+                    errorMessageLabel.setText(errorMessage[pq.peek()]);
+                else
+                    errorMessageLabel.setText("");
+            }
+        });
+
+        enterPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {  // If focus is lost
+                if (!isValidPassword(enterPasswordField.getText())) {
+                    if (!pq.contains(1))
+                        pq.add(1);
+                }
+                else {
+                    pq.remove(1);
+                }
+
+                if (pq.size() > 0)
+                    errorMessageLabel.setText(errorMessage[pq.peek()]);
+                else
+                    errorMessageLabel.setText("");
+            }
+        });
+
+    }
+
+    public void closeButtonOnAction(ActionEvent event) {
+        Stage curStage = (Stage) closeButton.getScene().getWindow();
+        curStage.close();
+    }
+
+    public void cancelOnAction(ActionEvent event) {
+        Stage curStage = (Stage) closeButton.getScene().getWindow();
+        curStage.close();
+    }
+
+    public void minimizeButtonOnAction(ActionEvent event) {
+        Stage curStage = (Stage) closeButton.getScene().getWindow();
+        curStage.setIconified(true);
+    }
+
+    public void uploadButtonOnAction(ActionEvent event) {
+        FileChooser.ExtensionFilter ex1 = new FileChooser.ExtensionFilter("PNG Files", "*.png");
+        FileChooser.ExtensionFilter ex2 = new FileChooser.ExtensionFilter("JPG Files", "*.jpg");
+        FileChooser.ExtensionFilter ex3 = new FileChooser.ExtensionFilter("All Files", "*.*");
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Choose an image");
+        fileChooser.getExtensionFilters().addAll(ex1, ex2, ex3);
+
+        Stage curStage = (Stage) closeButton.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(curStage);
+        if (selectedFile != null) {
+            imageTextField.setText(selectedFile.getPath());
         }
-        Matcher matcher = EMAIL_PATTERN.matcher(email);
-        return matcher.matches();
     }
 
-    public void usernameFieldOnAction(javafx.event.ActionEvent event) {
-
-    }
-
-    public void registerButtonOnAction(javafx.event.ActionEvent event) {
+    public void registerButtonOnAction(ActionEvent event) {
         if (errorMessageLabel.getText().equals("") == true) {
 
             registerUser();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login Successful");
+            alert.setTitle("Add Account Successful");
             alert.setHeaderText(null);
-            alert.setContentText("Welcome, " + usernameField.getText() + "!");
+            alert.setContentText("Welcome, " + usernameTextField.getText() + "!");
             alert.showAndWait();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Login Failed");
+            alert.setTitle("Add Account Failed");
             alert.setHeaderText("Invalid Credentials");
             alert.setContentText("Please check your username and password.");
             alert.showAndWait();
@@ -188,9 +177,9 @@ public class RegisterController implements Initializable {
         DatabaseConnection connectNow = DatabaseConnection.getInstance();
         Connection connectDB = connectNow.getDBConnection();
 
-        String firstname = "";
-        String lastname = "";
-        String username = usernameField.getText();
+        String firstname = firstnameTextField.getText();
+        String lastname = lastnameTextField.getText();
+        String username = usernameTextField.getText();
         String password = enterPasswordField.getText();
 
         String insertFields = "INSERT INTO user_account(lastname, firstname, username, password) " +
@@ -198,7 +187,7 @@ public class RegisterController implements Initializable {
         String insertValues = firstname + "','" + lastname + "','" + username + "','" + password + "')";
         String insertToRegister = insertFields + insertValues;
         String verifyLogin = "SELECT count(1) FROM user_account WHERE username = '"
-                + usernameField.getText()
+                + usernameTextField.getText()
                 + "' AND PASSWORD = '" + enterPasswordField.getText()
                 + "'";
 
@@ -208,14 +197,19 @@ public class RegisterController implements Initializable {
 
             while(queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-
+                    errorMessageLabel.setText("Duplicate Username!");
                 }
             }
-            statement.executeUpdate(insertToRegister);
+
+            if (errorMessageLabel.getText().equals("")) {
+                statement.executeUpdate(insertToRegister);
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
+
+        parentController.showUsers();
     }
 }

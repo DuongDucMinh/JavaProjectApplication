@@ -4,23 +4,40 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-    public Connection databaseLink;
+    private static DatabaseConnection instance; // Instance duy nhất của class
+    private Connection databaseLink;
 
-    public Connection getDBConnection() {
-
-        //String databaseName = "classicmodels";
+    // Constructor private để ngăn tạo đối tượng trực tiếp
+    private DatabaseConnection() {
+        // Cấu hình cơ sở dữ liệu
         String databaseName = "demo_db";
         String databaseUser = "root";
-        String databasePassword = "Minhnhinho3110";
-        String url = "jdbc:mysql://localhost:3307/" + databaseName;
+        String databasePassword = "!@#Thinh2005#@!";
+        String url = "jdbc:mysql://localhost:3306/" + databaseName;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            // Nạp driver MySQL
+            Class.forName("com.mysql.cj.jdbc.Driver");
             databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    // Phương thức để lấy instance duy nhất của class
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            synchronized (DatabaseConnection.class) {
+                if (instance == null) { // Kiểm tra lại trong block synchronized
+                    instance = new DatabaseConnection();
+                }
+            }
+        }
+        return instance;
+    }
+
+    // Phương thức để lấy kết nối cơ sở dữ liệu
+    public Connection getDBConnection() {
         return databaseLink;
     }
 }

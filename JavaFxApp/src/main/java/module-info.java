@@ -3,9 +3,19 @@ module com.example.javafxapp {
     requires mysql.connector.j;
     requires java.sql;
     requires java.desktop;
-    requires transitive de.jensd.fx.glyphs.fontawesome;
     requires javafx.controls;
+    requires com.google.gson;
 
-    opens com.example.javafxapp to javafx.fxml;
+
+    requires transitive de.jensd.fx.glyphs.fontawesome;
+    requires java.net.http;
+    requires org.apache.httpcomponents.httpclient;
+    requires org.apache.httpcomponents.httpcore;
+    requires org.json;
+    requires jdk.httpserver;
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
+    opens com.example.javafxapp to javafx.fxml, com.google.gson;
+
     exports com.example.javafxapp;
 }

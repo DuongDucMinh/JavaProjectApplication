@@ -5,13 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +31,25 @@ public class LoginController implements Initializable {
     private PasswordField enterPasswordField;
     @FXML
     private ImageView brandingImageView;
+
     @FXML
+    private Button closeButton;
+    @FXML
+    private Button minimizeButton;
+
+    private boolean logged_in = false;
+    private boolean isUser = true;
+
+    public void closeButtonOnAction(ActionEvent event) {
+        Stage curStage = (Stage) closeButton.getScene().getWindow();
+        curStage.close();
+    }
+
+    public void minimizeButtonOnAction(ActionEvent event) {
+        Stage curStage = (Stage) closeButton.getScene().getWindow();
+        curStage.setIconified(true);
+    }
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File file = new File("images/_@nethbookpoint_com__1_.png");
         Image brandingImage = new Image(file.toURI().toString());
@@ -46,12 +61,23 @@ public class LoginController implements Initializable {
                 && !enterPasswordField.getText().isBlank()) {
             validateLogin();
 
-            if (loginMessageLabel.getText().equals("Congratulations!")) {
-                GetData.username = usernameField.getText();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
-                Stage dashboardStage = (Stage) loginButton.getScene().getWindow();
-                dashboardStage.setScene(new Scene(fxmlLoader.load(), 1233, 704));
-                dashboardStage.show();
+            if (logged_in) {
+                if (isUser) {
+                    GetData.username = usernameField.getText();
+                    //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard1.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboardUser.fxml"));
+                    Stage dashboardStage = (Stage) loginButton.getScene().getWindow();
+                    dashboardStage.setScene(new Scene(fxmlLoader.load(), 1233, 704));
+                    dashboardStage.show();
+                }
+                else {
+                    GetData.username = usernameField.getText();
+                    //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard1.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard1.fxml"));
+                    Stage dashboardStage = (Stage) loginButton.getScene().getWindow();
+                    dashboardStage.setScene(new Scene(fxmlLoader.load(), 1233, 704));
+                    dashboardStage.show();
+                }
             }
         }
         else {
@@ -60,8 +86,31 @@ public class LoginController implements Initializable {
     }
 
     public void validateLogin() {
-        DatabaseConnection connectNow = new DatabaseConnection();
+        DatabaseConnection connectNow = DatabaseConnection.getInstance();
         Connection connectDB = connectNow.getDBConnection();
+
+        String verifyType = "SELECT count(1) FROM user_account WHERE type = 'manager' AND username = '"
+                + usernameField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifyType);
+
+            while(queryResult.next()) {
+                if (queryResult.getInt(1) == 1) {
+                    System.out.print("admin");
+                    isUser = false;
+                }
+                else {
+                    System.out.print("not admin");
+                    isUser = true;
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
 
         String verifyLogin = "SELECT count(1) FROM user_account WHERE username = '"
                 + usernameField.getText()
@@ -74,10 +123,21 @@ public class LoginController implements Initializable {
 
             while(queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    loginMessageLabel.setText("Congratulations!");
+                    //loginMessageLabel.setText("Congratulations!");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Login Successful");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Welcome, " + usernameField.getText() + "!");
+                    alert.showAndWait();
+                    logged_in = true;
                 }
                 else {
-                    loginMessageLabel.setText("Invalid login. Please try again");
+                    //loginMessageLabel.setText("Invalid login. Please try again");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Login Failed");
+                    alert.setHeaderText("Invalid Credentials");
+                    alert.setContentText("Please check your username and password.");
+                    alert.showAndWait();
                 }
             }
         }
@@ -87,11 +147,8 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void registerButtonOnAction(ActionEvent event) {
-        createAccountForm();
-    }
 
-    public void createAccountForm() {
+    public void registerButtonOnAction(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("register.fxml"));
             Stage registerStage = (Stage) registerButton.getScene().getWindow();

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="593.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxapp.ManagerBookController">
+   <children>
+      <ScrollPane fx:id="scrollPane" prefHeight="644.0" prefWidth="1021.0">
+        <content>
+          <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="1500.0" prefWidth="1021.0">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="230.0" fitWidth="163.0" layoutX="81.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="291.0" layoutY="96.0" text="Title :">
+                     <font>
+                        <Font name="AvenirLTStd-Heavy" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleLabel" alignment="TOP_LEFT" layoutX="396.0" layoutY="95.0" prefHeight="85.0" prefWidth="561.0" text="ADASD" wrapText="true">
+                     <font>
+                        <Font name="AvenirLTStd-Heavy" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="291.0" layoutY="194.0" text="Author :">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="addBookButton" layoutX="418.0" layoutY="275.0" mnemonicParsing="false" onAction="#insertToAvailableBooks" text="Add" />
+                  <Button layoutX="294.0" layoutY="330.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Delete" />
+                  <Label fx:id="authorLabel" layoutX="396.0" layoutY="194.0" prefHeight="23.0" prefWidth="568.0" text="ASASDA">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="81.0" layoutY="356.0" text="Description : ">
+                     <font>
+                        <Font name="AvenirLTStd-Heavy" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="81.0" layoutY="391.0" prefHeight="286.0" prefWidth="879.0" wrapText="true">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="82.0" layoutY="694.0" text="Information : " AnchorPane.leftAnchor="82.0">
+                     <font>
+                        <Font name="AvenirLTStd-Heavy" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="81.0" layoutY="755.0" text="Publisher: " AnchorPane.leftAnchor="82.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="81.0" layoutY="783.0" text="Published Date:" AnchorPane.leftAnchor="82.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="82.0" layoutY="725.0" text="Number of Pages:" AnchorPane.leftAnchor="82.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pagesLabel" layoutX="258.0" layoutY="725.0" text="Number of Pages:" AnchorPane.leftAnchor="255.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="publisherLabel" layoutX="257.0" layoutY="755.0" text="Publisher: " AnchorPane.leftAnchor="255.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="publishedDate" layoutX="258.0" layoutY="783.0" text="Published Date:" AnchorPane.leftAnchor="255.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="899.0" text="Related Books:" AnchorPane.leftAnchor="82.0">
+                     <font>
+                        <Font name="AvenirLTStd-Heavy" size="20.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane layoutX="85.0" layoutY="1015.0" prefHeight="217.0" prefWidth="861.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="217.0" prefWidth="863.0">
+                           <children>
+                              <HBox fx:id="relatedBookContainer" prefHeight="217.0" prefWidth="867.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <Label fx:id="categories" layoutX="255.0" layoutY="816.0" text="Categories" AnchorPane.leftAnchor="255.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="83.0" layoutY="815.0" text="Categories" AnchorPane.leftAnchor="82.0">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="quantityField" layoutX="357.0" layoutY="275.0" prefHeight="25.0" prefWidth="34.0" />
+                  <Label layoutX="289.0" layoutY="279.0" text="Quantity: " />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
