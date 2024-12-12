@@ -42,8 +42,11 @@ This is a comprehensive Library Management System built using **Java**, **JavaFX
 
 ## Author
 Nhu Dinh Tu   
+
 Phan Tien Thinh
+
 Duong Duc Minh
+
 Nguyen Anh Tuan
 
 ## Screenshots
