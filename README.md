@@ -1,4 +1,4 @@
-# Library Management System Project OOP
+![image](https://github.com/user-attachments/assets/ffb88715-8450-42a4-b93c-b468c86433e6)# Library Management System Project OOP
 
 This is a comprehensive Library Management System built using **Java**, **JavaFX**, and **MySQL**. The system is designed to manage books, user accounts, borrowing and returning books, and book requests from users. Additionally, it includes features for generating QR codes for book details and serving HTML pages via an HTTP server.
 
@@ -52,9 +52,11 @@ Nguyen Anh Tuan
 ## Screenshots
 
 ### User Dashboard
+![image](https://github.com/user-attachments/assets/9a36310c-0ae1-46b6-a186-887494507c1d)
 
 
 ### Book Details
+![image](https://github.com/user-attachments/assets/2db17971-e35a-48ef-aa89-6df8898e348d)
 
 
 ---
